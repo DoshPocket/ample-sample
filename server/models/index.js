@@ -1,4 +1,5 @@
-const Tech = require('./Tech');
-const Matchup = require('./Matchup');
+const Question = require('./Question');
+const Coordinator = require('./Coordinator');
+const Survey = require('./Survey');
 
-module.exports = { Tech, Matchup };
+module.exports = { Question, Coordinator, Survey };
