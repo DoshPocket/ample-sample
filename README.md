@@ -43,13 +43,19 @@ Contributors can clone the repository and reach out through the contacts provide
   For any questions about this project, please contact any of the contributors below: 
   
   Kenneth MacLean
+  
   kenneth.maclean84@gmail.com
+  
   Visit https://github.com/DoshPocket to access more of my projects.
   
   Jacqueline Hodgson
+  
   jacqueline.e.hodgson@gmail.com
+  
   Visit https://github.com/jacih to access more of my projects.
   
   Brandon Winkler 
+  
   brandonwinkler@live.ca
+  
   Visit https://github.com/bdubz93 to access more of my projects.
