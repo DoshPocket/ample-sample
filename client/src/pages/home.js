@@ -25,16 +25,16 @@ const useStyles = makeStyles((theme) => ({
     const classes = useStyles();
 
     return (
-      // <div className={classes.root}>
-      //   <Grid container spacing={2}>
-      //     <Grid item xs={12}>
-      //       <Container>
+      <div className={classes.root}>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <Container>
               <Grid container alignItems='center'>
                 <img src="/Images/ample-sample-logo.gif" alt='Ample Sample Animated Logo' width="500" height="500" />
               </Grid>
-      //       </Container>
-      //     </Grid>
-      //   </Grid>
-      // </div>
+            </Container>
+          </Grid>
+        </Grid>
+      </div>
     );
   }
