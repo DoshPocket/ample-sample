@@ -60,17 +60,18 @@ const resolvers = {
                 };
             },
             createQuestion: async (parent, { survey, question }, context) => {
-                const question = await Question.create({ survey, question });
+                const questionData = await Question.create({ survey, question });
                 const coordinator = await Coordinator.findOneAndUpdate(
                     { _id: context.Coordinator._id },
                     { $push: { survey: survey._id } },
                     { new: true }
                 );
                 return {
-                    question,
+                    question: questionData,
                     coordinator
                 };
             },
+            
             deleteSurvey: async (parent, { survey }, context) => {
                 const coordinator = await Coordinator.findOneAndUpdate(
                     { _id: context.Coordinator._id },
@@ -92,21 +93,6 @@ const resolvers = {
                 };
             },
         },
-        Coordinator: {
-            survey: async (parent, args, context) => {
-                return Survey.findOne({ _id: parent.survey });
-            }
-        },
-        Survey: {
-            questions: async (parent, args, context) => {
-                return Question.find({ survey: parent._id });
-            }
-        },
-        Question: {
-            survey: async (parent, args, context) => {
-                return Survey.findOne({ _id: parent.survey });
-            }
-        }
 };
 
 
