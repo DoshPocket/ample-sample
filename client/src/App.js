@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import Home from './pages/home.js';
+import SurveyTemplate from './components/SurveyTemplate';
+import NotFound from './pages/NotFound';
 // import NotFound from './pages/NotFound';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -28,18 +30,18 @@ function App() {
               path="/"
               element={<Home />}
             />
-            {/* <Route
-              path="/matchup"
-              element={<Matchup />}
-            />
             <Route
+              path="/template"
+              element={<SurveyTemplate />}
+            />
+            {/* <Route
               path="/matchup/:id"
               element={<Vote />}
-            />
+            /> */}
             <Route
               path="*"
               element={<NotFound />}
-            /> */}
+            />
           </Routes>
         </div>
       </Router>
