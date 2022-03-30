@@ -4,12 +4,14 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import Home from './pages/Home';
 import SurveyTemplate from './components/SurveyTemplate';
 import NotFound from './pages/NotFound';
+import Login from './pages/Login';
+import SignupForm from './pages/SignupForm';
+import Nav from './components/Nav';
 // import NotFound from './pages/NotFound';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import Nav from './components/Nav';
 
 // HOW TO IMPORT ICONS EXAMPLES BELOW
 // import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
@@ -37,9 +39,13 @@ function App() {
               element={<SurveyTemplate />}
             />
             {/* <Route
-              path="/matchup/:id"
-              element={<Vote />}
+              path="/login"
+              element={<Login />}
             /> */}
+            <Route
+              path="/signup"
+              element={<SignupForm />}
+            />
             <Route
               path="*"
               element={<NotFound />}

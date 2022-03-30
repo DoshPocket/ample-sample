@@ -1,4 +1,4 @@
-const Question = require('./Question');
+const Question = require('./question');
 const Coordinator = require('./Coordinator');
 const Survey = require('./Survey');
 

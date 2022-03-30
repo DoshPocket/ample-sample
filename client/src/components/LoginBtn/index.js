@@ -18,6 +18,7 @@ export default function LoginBtn() {
         <Button
           variant="contained"
           color="primary"
+          href="/template"
           className={classes.button}
           startIcon={<LoginIcon />}
           onClick={() => {window.location.href="/template" }}

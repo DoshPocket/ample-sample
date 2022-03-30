@@ -28,7 +28,7 @@ class SurveyTemplate extends Component {
             elements: [
               {
                 type: 'radiogroup',
-                name: 'using_duration',
+                name: 'question_1',
                 title: '1 How long have you been using the service?',
                 choices: [
                   'Less than a month',
@@ -39,7 +39,7 @@ class SurveyTemplate extends Component {
               },
               {
                 type: 'radiogroup',
-                name: 'using_duration',
+                name: 'question_2',
                 title: '2 How long have you been using the service?',
                 choices: [
                   'Less than a month',
@@ -50,7 +50,7 @@ class SurveyTemplate extends Component {
               },
               {
                 type: 'radiogroup',
-                name: 'using_duration',
+                name: 'question_3',
                 title: '3 How long have you been using the service?',
                 choices: [
                   'Less than a month',
@@ -61,7 +61,7 @@ class SurveyTemplate extends Component {
               },
               {
                 type: 'radiogroup',
-                name: 'using_duration',
+                name: 'question_4',
                 title: '4 How long have you been using the service?',
                 choices: [
                   'Less than a month',
@@ -72,7 +72,7 @@ class SurveyTemplate extends Component {
               },
               {
                 type: 'radiogroup',
-                name: 'using_duration',
+                name: 'question_5',
                 title: '5 How long have you been using the service?',
                 choices: [
                   'Less than a month',
@@ -83,7 +83,7 @@ class SurveyTemplate extends Component {
               },
               {
                 type: 'radiogroup',
-                name: 'using_duration',
+                name: 'question_6',
                 title: '6 How long have you been using the service?',
                 choices: [
                   'Less than a month',
@@ -94,7 +94,7 @@ class SurveyTemplate extends Component {
               },
               {
                 type: 'radiogroup',
-                name: 'using_duration',
+                name: 'question_7',
                 title: '7 How long have you been using the service?',
                 choices: [
                   'Less than a month',
@@ -105,7 +105,7 @@ class SurveyTemplate extends Component {
               },
               {
                 type: 'radiogroup',
-                name: 'using_duration',
+                name: 'question_8',
                 title: '8 How long have you been using the service?',
                 choices: [
                   'Less than a month',
@@ -116,7 +116,7 @@ class SurveyTemplate extends Component {
               },
               {
                 type: 'radiogroup',
-                name: 'using_duration',
+                name: 'question_9',
                 title: '9 How long have you been using the service?',
                 choices: [
                   'Less than a month',
@@ -127,7 +127,7 @@ class SurveyTemplate extends Component {
               },
               {
                 type: 'radiogroup',
-                name: 'using_duration',
+                name: 'question_10',
                 title: '10 How long have you been using the service?',
                 choices: [
                   'Less than a month',

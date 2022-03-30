@@ -6,18 +6,25 @@ const typeDefs = gql`
         title: String
         description: String
         number_of_questions: Int
-        questions: [question]
+        questions: [Question]
     }
 
+    type answer {
+        _id: ID!
+        survey_id: ID!
+        question: String
+        answers: [String]
+    }
+    
     type Question {
         _id: ID!
         question: String
-        choices: [choice]
+        choices: [Choice]
     }
 
     type Choice {
         _id: ID!
-        choice: String || Int
+        choice: String
         responseCount: Int
     }
 
@@ -28,12 +35,12 @@ const typeDefs = gql`
         email: String
         password: String
         company: String
-        surveys: Array
+        surveys: [Survey]
     }
-
+ 
     type Mutation {
-        createSurvey(title: String!, description: String!, number_of_questions: Int!, surveys: Array!): Coordinator
-        createQuestion( question: String!, choices: Array!): Survey
+        createSurvey(title: String!, description: String!, number_of_questions: Int!, surveys: String!): Coordinator
+        createQuestion( question: String!, choices: String!): Survey
         login(email: String!, password: String!): Auth
         signup(firstName: String!, lastName: String!, email: String!, password: String!): Auth
         deleteSurvey(_id: ID!): Coordinator
