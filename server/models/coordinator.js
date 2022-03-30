@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const Survey = require('./survey');
 
 const coordinatorSchema = new Schema({
   firstName: {
@@ -28,6 +29,7 @@ const coordinatorSchema = new Schema({
     type: String,
     default: 0,
   },
+  surveys: [Survey]
 });
 
 // set up pre-save middleware to create password
