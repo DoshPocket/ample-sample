@@ -4,6 +4,8 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import Home from './pages/Home'
 import SurveyTemplate from './components/SurveyTemplate';
 import NotFound from './pages/NotFound';
+import Login from './pages/Login';
+import SignupForm from './pages/SignupForm';
 import Nav from './components/Nav';
 // import NotFound from './pages/NotFound';
 import '@fontsource/roboto/300.css';
@@ -37,9 +39,13 @@ function App() {
               element={<SurveyTemplate />}
             />
             {/* <Route
-              path="/matchup/:id"
-              element={<Vote />}
+              path="/login"
+              element={<Login />}
             /> */}
+            <Route
+              path="/signup"
+              element={<SignupForm />}
+            />
             <Route
               path="*"
               element={<NotFound />}

@@ -1,5 +1,3 @@
-const mongoose = require('mongoose');
-
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
@@ -28,7 +26,13 @@ const coordinatorSchema = new Schema({
     type: String,
     default: 0,
   },
-});
+},
+{
+  toJSON: {
+    virtuals: true,
+  },
+}
+);
 
 // set up pre-save middleware to create password
 coordinatorSchema.pre('save', async function(next) {
