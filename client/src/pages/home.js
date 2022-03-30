@@ -1,13 +1,14 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import Nav from '../components/Nav';
-import DeleteBtn from '../components/DeleteBtn';
+// import Nav from '../components/Nav';
+// import DeleteBtn from '../components/DeleteBtn';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import LoginBtn from "../components/LoginBtn";
-import LogoutBtn from "../components/LogoutBtn";
-import SaveBtn from "../components/SaveBtn";
-import ShareableBtn from "../components/ShareableBtn";
+// import LoginBtn from "../components/LoginBtn";
+// import LogoutBtn from "../components/LogoutBtn";
+// import SaveBtn from "../components/SaveBtn";
+// import ShareableBtn from "../components/ShareableBtn";
+// import ReactPlayer from "react-player";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,21 +25,16 @@ const useStyles = makeStyles((theme) => ({
     const classes = useStyles();
 
     return (
-      <div className={classes.root}>
-        <Grid container spacing={2} alignItems="stretch">
-          <Grid item xs={12}>
-            <Container>
-              <div>
-                {Nav()}
-                {DeleteBtn()}
-                {LoginBtn()}
-                {LogoutBtn()}
-                {SaveBtn()}
-                {ShareableBtn()}
-              </div>
-            </Container>
-          </Grid>
-        </Grid>
-      </div>
+      // <div className={classes.root}>
+      //   <Grid container spacing={2}>
+      //     <Grid item xs={12}>
+      //       <Container>
+              <Grid container alignItems='center'>
+                <img src="/Images/ample-sample-logo.gif" alt='Ample Sample Animated Logo' width="500" height="500" />
+              </Grid>
+      //       </Container>
+      //     </Grid>
+      //   </Grid>
+      // </div>
     );
   }
