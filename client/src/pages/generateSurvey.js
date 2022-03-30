@@ -1,13 +1,13 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import Nav from '../components/Nav';
-import DeleteBtn from '../components/DeleteBtn';
+// import Nav from '../components/Nav';
+// import DeleteBtn from '../components/DeleteBtn';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import LoginBtn from "../components/LoginBtn";
-import LogoutBtn from "../components/LogoutBtn";
-import SaveBtn from "../components/SaveBtn";
-import ShareableBtn from "../components/ShareableBtn";
+// import LoginBtn from "../components/LoginBtn";
+// import LogoutBtn from "../components/LogoutBtn";
+// import SaveBtn from "../components/SaveBtn";
+// import ShareableBtn from "../components/ShareableBtn";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -78,4 +78,4 @@ const useStyles = makeStyles((theme) => ({
 //   );
 // };
 
-export default generateSurvey;
+// export default generateSurvey;
