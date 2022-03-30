@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import Home from './pages/Home'
+import Home from './pages/Home';
 import SurveyTemplate from './components/SurveyTemplate';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
@@ -26,7 +26,7 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-       <Nav />
+                <Nav />
       <Router>
         <div>
           <Routes>

@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import LoginIcon from '@mui/icons-material/Login';
+import GenerateIcon from '@mui/icons-material/Poll';
 // import Home from '../../pages/Home';
 
 const useStyles = makeStyles((theme) => ({
@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function LoginBtn() {
+export default function GenerateBtn() {
     const classes = useStyles();
   
     return (
@@ -18,12 +18,11 @@ export default function LoginBtn() {
         <Button
           variant="contained"
           color="primary"
-          href="/template"
           className={classes.button}
-          startIcon={<LoginIcon />}
+          startIcon={<GenerateIcon />}
           onClick={() => {window.location.href="/template" }}
         >
-        Login
+        Create a Survey
       </Button>
       </div>  
   );

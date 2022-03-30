@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const Survey = require('./survey');
 
 const coordinatorSchema = new Schema({
   firstName: {

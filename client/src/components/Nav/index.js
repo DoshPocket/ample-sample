@@ -5,6 +5,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
+import LoginBtn from "../LoginBtn";
+import GenerateBtn from "../GenerateBtn";
+// import LogoutBtn from "../LogoutBtn";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -31,10 +34,11 @@ export default function Nav() {
             <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             </IconButton>
             <Typography variant="h6" className={classes.title}>
-              Ample Sample
+                              <img src='/Images/ample-sample-logo.png' alt='Ample Sample Logo' width="80" height="80"/>
             </Typography>
-            <Button color="inherit">Generate</Button>
-            <Button color="inherit">Login</Button>
+              <GenerateBtn color="inherit" />
+              <LoginBtn color="inherit" />
+            {/* <Button color="inherit"><LogoutBtn /></Button> */}
           </Toolbar>
         </AppBar>
       </div>
