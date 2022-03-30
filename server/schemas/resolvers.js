@@ -1,29 +1,113 @@
-const { Tech, Matchup } = require('../models');
+const { Coordinator, Question, Survey } = require('../models');
+const { AuthenticationError } = require("apollo-server-express");
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
-  Query: {
-    tech: async () => {
-      return Tech.find({});
-    },
-    matchups: async (parent, { _id }) => {
-      const params = _id ? { _id } : {};
-      return Matchup.find(params);
-    },
-  },
-  Mutation: {
-    createMatchup: async (parent, args) => {
-      const matchup = await Matchup.create(args);
-      return matchup;
-    },
-    createVote: async (parent, { _id, techNum }) => {
-      const vote = await Matchup.findOneAndUpdate(
-        { _id },
-        { $inc: { [`tech${techNum}_votes`]: 1 } },
-        { new: true }
-      );
-      return vote;
-    },
-  },
+    Query: {
+        me: async (parent, args, context) => {
+          if (context.Coordinator) {
+            const coordinatorData = await Coordinator.findOne({ _id: context.Coordinator._id })
+              .select("-__v -password")
+              .populate("survey");
+            return coordinatorData;
+          }
+    
+          throw new AuthenticationError("Not logged in");
+        },
+        users: async () => {
+          return Coordinator.find().select("-__v -password").populate("survey");
+        },
+        user: async (parent, { email }) => {
+          return Coordinator.findOne({ email })
+            .select("-__v -password")
+            .populate("survey");
+        },
+      },
+        Mutation: {
+            signup: async (parent, { name, email, password, company }) => {
+                const coordinator = await Coordinator.create({ name, email, password, company });
+                const token = signToken(coordinator);
+                return {
+                    token,
+                    user: coordinator
+                };
+            },
+            login: async (parent, { email, password }) => {
+                const coordinator = await Coordinator.findOne({ email });
+                if (!coordinator) {
+                    throw new AuthenticationError("Invalid credentials");
+                }
+                const isValid = await coordinator.validatePassword(password);
+                if (!isValid) {
+                    throw new AuthenticationError("Invalid credentials");
+                }
+                const token = signToken(coordinator);
+                return {
+                    token,
+                    user: coordinator
+                };
+            },
+            createSurvey: async (parent, { title, description, number_of_questions }, context) => {
+                const survey = await Survey.create({ title, description, number_of_questions });
+                const coordinator = await Coordinator.findOneAndUpdate(
+                    { _id: context.Coordinator._id },
+                    { $push: { survey: survey._id } },
+                    { new: true }
+                );
+                return {
+                    survey,
+                    coordinator
+                };
+            },
+            createQuestion: async (parent, { survey, question }, context) => {
+                const question = await Question.create({ survey, question });
+                const coordinator = await Coordinator.findOneAndUpdate(
+                    { _id: context.Coordinator._id },
+                    { $push: { survey: survey._id } },
+                    { new: true }
+                );
+                return {
+                    question,
+                    coordinator
+                };
+            },
+            deleteSurvey: async (parent, { survey }, context) => {
+                const coordinator = await Coordinator.findOneAndUpdate(
+                    { _id: context.Coordinator._id },
+                    { $pull: { survey: survey._id } },
+                    { new: true }
+                );
+                return {
+                    coordinator
+                };
+            },
+            deleteQuestion: async (parent, { question }, context) => {
+                const coordinator = await Coordinator.findOneAndUpdate(
+                    { _id: context.Coordinator._id },
+                    { $pull: { survey: question._id } },
+                    { new: true }
+                );
+                return {
+                    coordinator
+                };
+            },
+        },
+        Coordinator: {
+            survey: async (parent, args, context) => {
+                return Survey.findOne({ _id: parent.survey });
+            }
+        },
+        Survey: {
+            questions: async (parent, args, context) => {
+                return Question.find({ survey: parent._id });
+            }
+        },
+        Question: {
+            survey: async (parent, args, context) => {
+                return Survey.findOne({ _id: parent.survey });
+            }
+        }
 };
+
 
 module.exports = resolvers;
