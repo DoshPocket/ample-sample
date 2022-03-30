@@ -1,4 +1,5 @@
-const { Schema, model } = require('mongoose');
+const { Schema } = require('mongoose');
+const questionSchema = require('./question');
 
 const surveySchema = new Schema({
   title: {
@@ -13,8 +14,9 @@ const surveySchema = new Schema({
     type: Number,
     default: 0,
   },
+  questions: [questionSchema],
 });
 
-const Survey = model('Survey', surveySchema);
+// const Survey = model('Survey', surveySchema);
 
-module.exports = Survey;
+module.exports = surveySchema;
