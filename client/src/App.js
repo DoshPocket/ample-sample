@@ -4,7 +4,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import Home from './pages/Home';
 import SurveyTemplate from './components/SurveyTemplate';
 import NotFound from './pages/NotFound';
-import Login from './pages/Login';
+// import Login from './pages/Login';
 import SignupForm from './pages/SignupForm';
 import Nav from './components/Nav';
 // import NotFound from './pages/NotFound';
@@ -26,9 +26,10 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-                <Nav />
+          
       <Router>
         <div>
+          <Nav />
           <Routes>
             <Route
               path="/"
