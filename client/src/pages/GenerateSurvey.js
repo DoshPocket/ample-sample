@@ -1,11 +1,7 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
-// import Nav from '../components/Nav';
-// import DeleteBtn from '../components/DeleteBtn';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-// import LoginBtn from "../components/LoginBtn";
-// import LogoutBtn from "../components/LogoutBtn";
 // import SaveBtn from "../components/SaveBtn";
 // import ShareableBtn from "../components/ShareableBtn";
 
@@ -29,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
           <Grid item xs={12}>
             <Container>
               <div>
+                {/* FILL ME WITH A SCROLLABLE WINDOW, FORM TO CREATE SURVEY, A SAVE BUTTON, AND A SHAREABLE BUTTON AT THE END!!!! */}
               </div>
             </Container>
           </Grid>
