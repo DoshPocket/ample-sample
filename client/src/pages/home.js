@@ -29,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
           <Grid item xs={12}>
             <Container>
               <div>
-                {Nav()}
                 {DeleteBtn()}
                 {LoginBtn()}
                 {LogoutBtn()}

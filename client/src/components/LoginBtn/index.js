@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import LoginIcon from '@mui/icons-material/Login';
 // import Profile from './pages/Profile';
-import Home from '../../pages/Home';
+import SurveyTemplate from '../SurveyTemplate';
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -19,9 +19,9 @@ export default function LoginBtn() {
         <Button
           variant="contained"
           color="primary"
+          href="/template"
           className={classes.button}
           startIcon={<LoginIcon />}
-          onClick={() => {<Home />}}
         >
         Login
       </Button>

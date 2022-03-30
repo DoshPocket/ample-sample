@@ -82,16 +82,6 @@ const resolvers = {
                     coordinator
                 };
             },
-            deleteQuestion: async (parent, { question }, context) => {
-                const coordinator = await Coordinator.findOneAndUpdate(
-                    { _id: context.Coordinator._id },
-                    { $pull: { survey: question._id } },
-                    { new: true }
-                );
-                return {
-                    coordinator
-                };
-            },
         },
 };
 

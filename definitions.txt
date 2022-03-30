@@ -1,0 +1,4 @@
+coordinator =  a user
+question = question title
+answer = multiple choice questions
+response = answer to multiple choice question
