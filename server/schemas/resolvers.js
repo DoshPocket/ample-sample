@@ -6,10 +6,10 @@ const resolvers = {
     Query: {
         me: async (parent, args, context) => {
           if (context.Coordinator) {
-            const coordinatorData = await Coordinator.findOne({ _id: context.Coordinator._id })
+            const coordinator = await Coordinator.findOne({ _id: context.Coordinator._id })
               .select("-__v -password")
               .populate("survey");
-            return coordinatorData;
+            return coordinator;
           }
     
           throw new AuthenticationError("Not logged in");
@@ -29,7 +29,7 @@ const resolvers = {
                 const token = signToken(coordinator);
                 return {
                     token,
-                    user: coordinator
+                    coordinator
                 };
             },
             login: async (parent, { email, password }) => {
@@ -48,52 +48,59 @@ const resolvers = {
                 };
             },
             createSurvey: async (parent, { title, description, number_of_questions }, context) => {
+                if (context.Coordinator) {
                 const survey = await Survey.create({ title, description, number_of_questions });
                 const coordinator = await Coordinator.findOneAndUpdate(
-                    { _id: context.Coordinator._id },
-                    { $push: { survey: survey._id } },
+                    { _id: Coordinator._id },
+                    { $push: { surveys: survey._id } },
                     { new: true }
                 );
                 return {
-                    survey,
                     coordinator
                 };
+              }
+                throw new AuthenticationError('You need to be logged in to create a question');
             },
-            createQuestion: async (parent, { survey, question }, context) => {
-                const questionData = await Question.create({ survey, question });
+            // when you click to save question? the question and it's answers will be instantiated; The survey will be updated to add the question(s) 
+            createQuestion: async (parent, { question, answers }, context) => {
+                if (context.Coordinator) {
+                const questionData = await Question.create({ question, answers });
+                const survey = await Survey.findOneAndUpdate(
+                    { _id: Survey._id },
+                    { $push: { questions: question._id } },
+                    { new: true }
+                );
+                return survey;
+              };
+              throw new AuthenticationError('You need to be logged in to create a question');
+            },
+            // when you click the delete button on a survey, the id is passed as an arg to the deleteSurvey function and the Coordinator's surveys array is updated to remove the chosen one. 
+            deleteSurvey: async (parent, args, context) => {
+                if (context.Coordinator) {
                 const coordinator = await Coordinator.findOneAndUpdate(
-                    { _id: context.Coordinator._id },
-                    { $push: { survey: survey._id } },
+                    { _id: Coordinator._id },
+                    { $pull: { surveys: { _id: args._id } } },
                     { new: true }
                 );
-                return {
-                    question: questionData,
-                    coordinator
-                };
+                return coordinator;
+                }
+                throw new AuthenticationError('You need to be logged in to delete a survey');
             },
-            
-            deleteSurvey: async (parent, { survey }, context) => {
-                const coordinator = await Coordinator.findOneAndUpdate(
-                    { _id: context.Coordinator._id },
-                    { $pull: { survey: survey._id } },
-                    { new: true }
-                );
-                return {
-                    coordinator
-                };
-            },
-            deleteQuestion: async (parent, { question }, context) => {
-                const coordinator = await Coordinator.findOneAndUpdate(
-                    { _id: context.Coordinator._id },
-                    { $pull: { survey: question._id } },
-                    { new: true }
-                );
-                return {
-                    coordinator
-                };
-            },
+            // built similar to book search engine - when you click on the button associated with the question, it is removed from the survey's questions: [Question] array and the survey is returned less that question.
+            // if we delete questions need to build additional logic to handle deleting last question, and whether that means deleting the survey
+            // deleteQuestion: async (parent, args, context) => {
+            //     if (context.Coordinator) {
+            //     const survey = await Survey.findOneAndUpdate(
+            //         { _id: Survey._id },
+            //         { $pull: { questions: args._id } },
+            //         { new : true }
+            //     );
+            //     return survey;
+            // }
+            // throw new AuthenticationError('You need to be logged in to delete a question');
+            // },
         },
 };
 
-
 module.exports = resolvers;
+
