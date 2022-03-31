@@ -19,9 +19,10 @@ export default function GenerateBtn() {
         <Button
           variant="contained"
           color="primary"
+          href='/generate'
           className={classes.button}
           startIcon={<GenerateIcon />}
-          onClick={() => {window.location.href="/template" }}
+          onClick={() => {window.location.href="/generate" }}
         >
         Create a Survey
       </Button>

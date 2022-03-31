@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
       <div className={classes.root}>
         <Grid container direction='column' alignItems='center' spacing={2}>
           <Grid item xs={12}>
-            <Box m={2} p={4} >
+            <Box m={2} p={4}>
                 <img src="/Images/ample-sample-logo.gif" alt='Ample Sample Animated Logo' width="500" height="500" />
             </Box>
           </Grid>

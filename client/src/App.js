@@ -1,15 +1,20 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+
 import Home from './pages/Home';
 import SurveyTemplate from './components/SurveyTemplate';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 import SignupForm from './pages/SignupForm';
+import Profile from './pages/Profile';
+import GenerateSurvey from './pages/GenerateSurvey';
+import Analytics from './pages/Analytics';
+import FillSurvey from './pages/FillSurvey';
+
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Profile from './pages/Profile';
 
 // import NotFound from './pages/NotFound';
 import '@fontsource/roboto/300.css';
@@ -33,8 +38,6 @@ const theme = createTheme({
     }
   }
 });
-
-
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -78,6 +81,18 @@ function App() {
                     <Route
                     path="/profile"
                     element={<Profile />}
+                  />
+                    <Route
+                    path="/generate"
+                    element={<GenerateSurvey />}
+                  />
+                    <Route
+                    path="/analytics"
+                    element={<Analytics />}
+                  />
+                    <Route
+                    path="/fill"
+                    element={<FillSurvey />}
                   />
                   <Route
                     path="*"
