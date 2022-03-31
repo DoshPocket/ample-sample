@@ -7,7 +7,20 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import LoginBtn from "../LoginBtn";
 import GenerateBtn from "../GenerateBtn";
-// import LogoutBtn from "../LogoutBtn";
+import LogoutBtn from "../LogoutBtn";
+import SignupBtn from "../SignupBtn";
+import ProfileBtn from "../ProfileBtn";
+import { useLocation } from 'react-router-dom'
+
+const map={
+  '/': [ <LoginBtn />, <SignupBtn /> ],
+  '/template': [ <GenerateBtn />, <LogoutBtn /> ],
+  '/Profile': [ <GenerateBtn />, <LogoutBtn /> ],
+  '/GenerateSurvey': [ <ProfileBtn />, <LogoutBtn /> ],
+  '/Analytics': [ <GenerateBtn />, <ProfileBtn />, <LogoutBtn /> ],
+  '/FillSurvey': [ <LoginBtn />, <SignupBtn /> ],
+}
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -27,6 +40,9 @@ const useStyles = makeStyles((theme) => ({
 export default function Nav() {
     const classes = useStyles();
   
+    const location = useLocation();
+    console.log(location.pathname);
+
     return (
       <div className={classes.root}>
         <AppBar position="static">
@@ -36,8 +52,16 @@ export default function Nav() {
             <Typography variant="h6" className={classes.title}>
                               <img src='/Images/ample-sample-logo.png' alt='Ample Sample Logo' width="80" height="80"/>
             </Typography>
-              <GenerateBtn color="inherit" />
-              <LoginBtn color="inherit" />
+              {map[location.pathname] && map[location.pathname].map((button, i) => (
+                <span key={i}>
+                {button}
+                </span>
+              ))}
+              {/* {!map[location.pathname] && (
+                
+              )} */}
+              {/* <GenerateBtn color="inherit" />
+              <LoginBtn color="inherit" /> */}
             {/* <Button color="inherit"><LogoutBtn /></Button> */}
           </Toolbar>
         </AppBar>
