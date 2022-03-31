@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // import DeleteBtn from '../components/DeleteBtn';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 // import SubmitBtn from "../components/SubmitBtn";
 // import Profile from "./Profile";
 // import SignupBtn from "../components/SignupBtn";
@@ -27,13 +28,11 @@ const useStyles = makeStyles((theme) => ({
 
     return (
       <div className={classes.root}>
-        <Grid container spacing={2}>
+        <Grid container direction='column' alignItems='center' spacing={2}>
           <Grid item xs={12}>
-            <Container>
-              <Grid container alignItems='center'>
+            <Box m={2} p={10} >
                 <img src="/Images/ample-sample-logo.gif" alt='Ample Sample Animated Logo' width="500" height="500" />
-              </Grid>
-            </Container>
+            </Box>
           </Grid>
         </Grid>
       </div>
