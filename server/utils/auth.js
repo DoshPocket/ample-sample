@@ -7,19 +7,22 @@ module.exports = {
     if (req.headers.authorization) {
       token = token.split(" ").pop().trim();
     }
+    console.log("inMiddleware");
+    // console.log(req);
     if (!token) {
       return req;
     }
     try {
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
+      console.log("inMiddleware2")
       req.user = data;
     } catch {
       console.log("Invalid token");
     }
     return req;
   },
-  signToken: function ({ username, email, _id }) {
-    const payload = { username, email, _id };
+  signToken: function ({ email, _id }) {
+    const payload = { email, _id };
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   },
 };

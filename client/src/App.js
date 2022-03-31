@@ -7,6 +7,7 @@ import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 import SignupForm from './pages/SignupForm';
 import Nav from './components/Nav';
+import Profile from './pages/Profile';
 // import NotFound from './pages/NotFound';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -18,7 +19,16 @@ import '@fontsource/roboto/700.css';
 // import ThreeDRotation from '@mui/icons-material/ThreeDRotation';
 
 const client = new ApolloClient({
-  uri: '/graphql',
+  request: (operation) => {
+    const token = localStorage.getItem("id_token");
+console.log(token)
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : "",
+      },
+    });
+  },
+  uri: "/graphql",
   cache: new InMemoryCache(),
 });
 
@@ -46,6 +56,10 @@ function App() {
             <Route
               path="/signup"
               element={<SignupForm />}
+            />
+              <Route
+              path="/profile"
+              element={<Profile />}
             />
             <Route
               path="*"
