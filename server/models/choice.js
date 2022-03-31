@@ -1,8 +1,8 @@
 const { Schema } = require('mongoose');
 
-const choicesSchema = new Schema({
+const choiceSchema = new Schema({
     choice: {
-        type: String || Number,
+        type: String,
         required: true
     },
     responseCount: {
@@ -12,4 +12,4 @@ const choicesSchema = new Schema({
     },
 });
 
-module.exports = choicesSchema;
+module.exports = choiceSchema;

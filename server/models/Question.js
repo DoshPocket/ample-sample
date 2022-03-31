@@ -1,12 +1,12 @@
-const { Schema, model } = require('mongoose');
-const choicesSchema = require('./choices');
+const { Schema } = require('mongoose');
+const choiceSchema = require('./choice');
 
 const questionSchema = new Schema({
   question: {
     type: String,
     required: true,
   },
-  choices: [choicesSchema],
+  choices: [choiceSchema],
 });
 
 // const Question = model('Question', questionSchema);
