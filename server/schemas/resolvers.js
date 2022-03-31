@@ -1,4 +1,4 @@
-const { Coordinator, Question, Survey } = require('../models');
+const { Coordinator, Survey, Question, choiceSchema } = require('../models');
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 
@@ -24,8 +24,8 @@ const resolvers = {
         },
       },
         Mutation: {
-            signup: async (parent, { firstName, lastName, email, password, company }) => {
-                const coordinator = await Coordinator.create({ firstName, lastName, email, password, company });
+            addCoordinator: async (parent, { firstName, lastName, email, password, company }) => {
+                const coordinator = await Coordinator.create({ firstName, lastName, email, password, company  });
                 const token = signToken(coordinator);
                 return {
                     token,
@@ -47,12 +47,13 @@ const resolvers = {
                     user: coordinator
                 };
             },
-            createSurvey: async (parent, { title, description, number_of_questions }, context) => {
+            // in logic to handle survey generation, this should be called once after all choices and questions have been created;
+            createSurvey: async (parent, { args }, context) => {
                 if (context.Coordinator) {
-                const survey = await Survey.create({ title, description, number_of_questions });
+                const survey = await Survey.create({ args });
                 const coordinator = await Coordinator.findOneAndUpdate(
                     { _id: Coordinator._id },
-                    { $push: { surveys: survey._id } },
+                    { $push: { savedSurveys: input } },
                     { new: true }
                 );
                 return {
@@ -61,16 +62,29 @@ const resolvers = {
               }
                 throw new AuthenticationError('You need to be logged in to create a question');
             },
-            // when you click to save question? the question and it's answers will be instantiated; The survey will be updated to add the question(s) 
-            createQuestion: async (parent, { question, answers }, context) => {
+            // when you click to save question? the question and it's choice will be instantiated; The survey will be updated to add the question(s) 
+            createQuestion: async (parent, { args, input }, context) => {
                 if (context.Coordinator) {
-                const questionData = await Question.create({ question, answers });
+                const questionData = await Question.create({ args, input });
                 const survey = await Survey.findOneAndUpdate(
                     { _id: Survey._id },
-                    { $push: { questions: question._id } },
+                    { $push: { savedQuestion: input } },
                     { new: true }
                 );
                 return survey;
+              };
+              throw new AuthenticationError('You need to be logged in to create a question');
+            },
+            // when you click to save choice? the choice will be instantiated; The question will be updated to add the choices(s) 
+            createChoice: async (parent, { args, input }, context) => {
+                if (context.Coordinator) {
+                const choiceData = await choiceSchema.create({ args, input });
+                const question = await Question.findOneAndUpdate(
+                    { _id: Question._id },
+                    { $push: { savedChoice: input } },
+                    { new: true }
+                );
+                return question;
               };
               throw new AuthenticationError('You need to be logged in to create a question');
             },
@@ -79,7 +93,7 @@ const resolvers = {
                 if (context.Coordinator) {
                 const coordinator = await Coordinator.findOneAndUpdate(
                     { _id: Coordinator._id },
-                    { $pull: { surveys: { _id: args._id } } },
+                    { $pull: { savedSurveys: { _id: args._id } } },
                     { new: true }
                 );
                 return coordinator;
