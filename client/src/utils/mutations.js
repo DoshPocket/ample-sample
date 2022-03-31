@@ -1,15 +1,15 @@
 import gql from 'graphql-tag';
 
 export const ADD_COORDINATOR = gql`
-  mutation addCoordinator($firstName: String!, $lastName: String!, $email: String!, $password: String!, $company: String!) {
-    addCoordinator(firstName: $firstName, lastName: $lastName, email: $email, password: $password, company: $company) {
-      token
-      Coordinator {
-        _id
-        email
-      }
+mutation addCoordinator($firstName: String!, $lastName: String!, $email: String!, $password: String!, $company: String) {
+  addCoordinator(firstName: $firstName, lastName: $lastName email: $email, password: $password, company: $company) {
+    token
+    coordinator {
+      _id
+      email
     }
   }
+}
 `;
 
 export const LOGIN_USER = gql`

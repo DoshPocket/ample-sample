@@ -25,13 +25,21 @@ const resolvers = {
       },
         Mutation: {
             addCoordinator: async (parent, { firstName, lastName, email, password, company }) => {
+              console.log("this is being read coords");
                 const coordinator = await Coordinator.create({ firstName, lastName, email, password, company  });
                 const token = signToken(coordinator);
+                console.log(token);
                 return {
                     token,
                     coordinator
                 };
             },
+            // addCoordinator: async (parent, args) => {
+            //   const coordinator = await Coordinator.create(args);
+            //   const token = signToken(coordinator);
+        
+            //   return { token, coordinator };
+            // },
             login: async (parent, { email, password }) => {
                 const coordinator = await Coordinator.findOne({ email });
                 if (!coordinator) {

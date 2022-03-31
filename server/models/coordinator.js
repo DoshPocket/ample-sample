@@ -13,7 +13,6 @@ const coordinatorSchema = new Schema({
     },
   email: {
     type: String,
-    default: 0,
     required: true,
     unique: true,
     match: [/.+@.+\..+/, 'Must use a valid email address'],
@@ -25,7 +24,6 @@ const coordinatorSchema = new Schema({
     },
   company: {
     type: String,
-    default: 0,
   },
   savedSurveys: [surveySchema],
 },

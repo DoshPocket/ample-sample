@@ -64,7 +64,7 @@ const typeDefs = gql`
     }
  
     type Mutation {
-        addCoordinator(firstName: String!, lastName: String!, email: String!, password: String!, company: String!, input: savedSurveys!): Auth
+        addCoordinator(firstName: String!, lastName: String!, email: String!, password: String!, company: String): Auth
         login(email: String!, password: String!): Auth
         createSurvey(title: String!, description: String!, number_of_questions: Int!, input: savedQuestion!): Coordinator
         createQuestion(question: String!, input: savedChoice!): Survey
