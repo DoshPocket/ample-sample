@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   // },
 }));
 
-  export default function Home() {
+  export default function GenerateSurvey() {
     const classes = useStyles();
 
     return (

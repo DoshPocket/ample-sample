@@ -7,15 +7,32 @@ import NotFound from './pages/NotFound';
 // import Login from './pages/Login';
 import SignupForm from './pages/SignupForm';
 import Nav from './components/Nav';
+import Footer from './components/Footer';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 // import NotFound from './pages/NotFound';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
-// HOW TO IMPORT ICONS EXAMPLES BELOW
-// import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
-// import ThreeDRotation from '@mui/icons-material/ThreeDRotation';
+const theme = createTheme({
+  palette: {
+    primary: {
+      light: '#58a5f0',
+      main: '#0277bd',
+      dark: '#004c8c',
+      contrastText: '#ffffff',
+    },
+    secondary: {
+      light: '#e2f1f8',
+      main: '#b0bec5',
+      dark: '#808e95',
+      contrastText: '#000000',
+    }
+  }
+});
+
+
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -26,34 +43,36 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-          
-      <Router>
-        <div>
-          <Nav />
-          <Routes>
-            <Route
-              path="/"
-              element={<Home />}
-            />
-            <Route
-              path="/template"
-              element={<SurveyTemplate />}
-            />
-            {/* <Route
-              path="/login"
-              element={<Login />}
-            /> */}
-            <Route
-              path="/signup"
-              element={<SignupForm />}
-            />
-            <Route
-              path="*"
-              element={<NotFound />}
-            />
-          </Routes>
-        </div>
-      </Router>
+      <ThemeProvider theme={theme}>
+        <Router>
+          <div>
+            <Nav />
+              <Routes>
+                <Route
+                  path="/"
+                  element={<Home />}
+                />
+                <Route
+                  path="/template"
+                  element={<SurveyTemplate />}
+                />
+                {/* <Route
+                  path="/login"
+                  element={<Login />}
+                /> */}
+                <Route
+                  path="/signup"
+                  element={<SignupForm />}
+                />
+                <Route
+                  path="*"
+                  element={<NotFound />}
+                />
+              </Routes>
+          </div>
+          <Footer />
+        </Router>
+      </ThemeProvider>
     </ApolloProvider>
   );
  }
