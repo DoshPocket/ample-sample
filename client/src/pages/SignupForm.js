@@ -6,8 +6,8 @@ import Auth from "../utils/auth";
 
 const SignupForm = () => {
   const [coordinatorFormData, setCoordinatorFormData] = useState({
-    firstname: "",
-    lastname: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
     company: "",
@@ -42,8 +42,8 @@ const SignupForm = () => {
     }
 
     setCoordinatorFormData({
-      firstname: "",
-      lastname: "",
+      firstName: "",
+      lastName: "",
       email: "",
       password: "",
       company: "",
@@ -63,13 +63,13 @@ const SignupForm = () => {
         </Alert>
 
         <Form.Group>
-          <Form.Label htmlFor="firsname">First Name</Form.Label>
+          <Form.Label htmlFor="firstName">First Name</Form.Label>
           <Form.Control
             type="text"
             placeholder="First Name"
-            name="firstname"
+            name="firstName"
             onChange={handleInputChange}
-            value={coordinatorFormData.firstname}
+            value={coordinatorFormData.firstName}
             required
           />
           <Form.Control.Feedback type="invalid">
@@ -78,13 +78,13 @@ const SignupForm = () => {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label htmlFor="lastname">Last Name</Form.Label>
+          <Form.Label htmlFor="lastName">Last Name</Form.Label>
           <Form.Control
             type="text"
             placeholder="Last Name"
-            name="lastname"
+            name="lastName"
             onChange={handleInputChange}
-            value={coordinatorFormData.lastname}
+            value={coordinatorFormData.lastName}
             required
           />
           <Form.Control.Feedback type="invalid">
@@ -123,7 +123,7 @@ const SignupForm = () => {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label htmlFor="comapny">Comapny</Form.Label>
+          <Form.Label htmlFor="company">Company</Form.Label>
           <Form.Control
             type="text"
             placeholder="Company"
@@ -136,8 +136,8 @@ const SignupForm = () => {
         <Button
           disabled={
             !(
-                coordinatorFormData.firstname &&
-                coordinatorFormData.lastname &&
+                coordinatorFormData.firstName &&
+                coordinatorFormData.lastName &&
                 coordinatorFormData.email &&
                 coordinatorFormData.password &&
                 coordinatorFormData.company
