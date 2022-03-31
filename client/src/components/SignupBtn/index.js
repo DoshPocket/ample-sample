@@ -17,8 +17,10 @@ export default function SignupBtn() {
         <Button
           variant="contained"
           color="primary"
+          href="/signup"
           className={classes.button}
           startIcon={<SignupIcon />}
+          onClick={() => {window.location.href="/signup" }}
         >
         Signup
       </Button>

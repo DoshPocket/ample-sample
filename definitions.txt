@@ -2,3 +2,8 @@ coordinator =  a user
 question = question title
 answer = multiple choice questions
 response = answer to multiple choice question
+
+
+
+
+console.log(JSON.stringify(error, null, 2));

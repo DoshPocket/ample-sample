@@ -32,20 +32,42 @@ const resolvers = {
                     coordinator
                 };
             },
+            // addCoordinator: async (parent, args) => {
+            //   const coordinator = await Coordinator.create(args);
+            //   const token = signToken(coordinator);
+        
+            //   return { token, coordinator };
+            // },
+            // login: async (parent, { email, password }) => {
+            //     const coordinator = await Coordinator.findOne({ email });
+            //     if (!coordinator) {
+            //         throw new AuthenticationError("Invalid credentials");
+            //     }
+            //     const isValid = await Coordinator.validatePassword(password);
+            //     if (!isValid) {
+            //         throw new AuthenticationError("Invalid credentials");
+            //     }
+            //     const token = signToken(coordinator);
+            //     return {
+            //         token,
+            //         user
+            //     };
+            // },
             login: async (parent, { email, password }) => {
-                const coordinator = await Coordinator.findOne({ email });
-                if (!coordinator) {
-                    throw new AuthenticationError("Invalid credentials");
-                }
-                const isValid = await coordinator.validatePassword(password);
-                if (!isValid) {
-                    throw new AuthenticationError("Invalid credentials");
-                }
-                const token = signToken(coordinator);
-                return {
-                    token,
-                    user: coordinator
-                };
+              const coordinator = await Coordinator.findOne({ email });
+        
+              if (!coordinator) {
+                throw new AuthenticationError("Incorrect credentials");
+              }
+        
+              const correctPw = await coordinator.isCorrectPassword(password);
+        
+              if (!correctPw) {
+                throw new AuthenticationError("Incorrect credentials");
+              }
+        
+              const token = signToken(coordinator);
+              return { token, coordinator };
             },
             // in logic to handle survey generation, this should be called once after all choices and questions have been created;
             createSurvey: async (parent, { args }, context) => {

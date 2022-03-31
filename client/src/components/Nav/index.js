@@ -17,7 +17,7 @@ import { useLocation } from 'react-router-dom'
 const map={
   '/': [ <LoginBtn />, <SignupBtn /> ],
   '/template': [ <GenerateBtn />, <LogoutBtn /> ],
-  '/Profile': [ <GenerateBtn />, <LogoutBtn /> ],
+  '/profile': [ <GenerateBtn />, <LogoutBtn /> ],
   '/GenerateSurvey': [ <ProfileBtn />, <LogoutBtn /> ],
   '/Analytics': [ <GenerateBtn />, <ProfileBtn />, <LogoutBtn /> ],
   '/FillSurvey': [ <LoginBtn />, <SignupBtn /> ],
