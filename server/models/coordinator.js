@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const Survey = require('./survey');
+const surveySchema = require('./survey');
 
 const coordinatorSchema = new Schema({
   firstName: {
@@ -27,6 +27,7 @@ const coordinatorSchema = new Schema({
     type: String,
     default: 0,
   },
+  savedSurveys: [surveySchema],
 },
 {
   toJSON: {

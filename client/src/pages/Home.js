@@ -4,9 +4,10 @@ import { makeStyles } from '@material-ui/core/styles';
 // import DeleteBtn from '../components/DeleteBtn';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import SubmitBtn from "../components/SubmitBtn";
-// import LoginBtn from "../components/LoginBtn";
-// import LogoutBtn from "../components/LogoutBtn";
+// import SubmitBtn from "../components/SubmitBtn";
+// import Profile from "./Profile";
+// import SignupBtn from "../components/SignupBtn";
+// import ProfileBtn from "../components/ProfileBtn";
 // import ShareableBtn from "../components/ShareableBtn";
 // import ReactPlayer from "react-player";
 
