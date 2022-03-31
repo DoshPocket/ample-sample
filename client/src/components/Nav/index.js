@@ -4,6 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 // import Button from '@material-ui/core/Button';
+// import BasicModal from '../BasicModal';
 import IconButton from '@material-ui/core/IconButton';
 import LoginBtn from "../LoginBtn";
 import GenerateBtn from "../GenerateBtn";
@@ -50,19 +51,15 @@ export default function Nav() {
             <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             </IconButton>
             <Typography variant="h6" className={classes.title}>
-                              <img src='/Images/ample-sample-logo.png' alt='Ample Sample Logo' width="80" height="80"/>
+              <a href='/'>
+                <img src='/Images/ample-sample-logo.png' alt='Ample Sample Logo' width="80" height="80"/>
+              </a>
             </Typography>
               {map[location.pathname] && map[location.pathname].map((button, i) => (
                 <span key={i}>
                 {button}
                 </span>
               ))}
-              {/* {!map[location.pathname] && (
-                
-              )} */}
-              {/* <GenerateBtn color="inherit" />
-              <LoginBtn color="inherit" /> */}
-            {/* <Button color="inherit"><LogoutBtn /></Button> */}
           </Toolbar>
         </AppBar>
       </div>
