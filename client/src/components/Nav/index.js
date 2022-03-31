@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -38,6 +39,27 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
+  const theme = createTheme({
+
+    palette: {
+      background: {
+        box: '#58a5f0',
+        },
+      primary: {
+        light: '#58a5f0',
+        main: '#0277bd',
+        dark: '#004c8c',
+        contrastText: '#ffffff',
+      },
+      secondary: {
+        light: '#e2f1f8',
+        main: '#b0bec5',
+        dark: '#808e95',
+        contrastText: '#000000',
+      }
+    }
+  });
+
 export default function Nav() {
     const classes = useStyles();
   
@@ -45,9 +67,10 @@ export default function Nav() {
     console.log(location.pathname);
 
     return (
+      <ThemeProvider theme={theme}>
       <div className={classes.root}>
-        <AppBar position="static">
-          <Toolbar>
+        <AppBar sx={{bgcolor: 'primary.light'}} position="static">
+          <Toolbar >
             <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             </IconButton>
             <Typography variant="h6" className={classes.title}>
@@ -63,5 +86,6 @@ export default function Nav() {
           </Toolbar>
         </AppBar>
       </div>
+      </ThemeProvider>
     );
   }
