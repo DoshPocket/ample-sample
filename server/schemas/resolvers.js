@@ -24,8 +24,8 @@ const resolvers = {
         },
       },
         Mutation: {
-            signup: async (parent, { name, email, password, company }) => {
-                const coordinator = await Coordinator.create({ name, email, password, company });
+            signup: async (parent, { firstname, lastname, email, password, company }) => {
+                const coordinator = await Coordinator.create({ firstname, lastname, email, password, company });
                 const token = signToken(coordinator);
                 return {
                     token,
