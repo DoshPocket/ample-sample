@@ -16,7 +16,7 @@ export default function LogoutBtn() {
       <div>
         <Button
           variant="contained"
-          color="primary"
+          style={{background: "#002984", color: "#ffffff"}}
           className={classes.button}
           startIcon={<LogoutIcon />}
           onClick={Auth.logout}

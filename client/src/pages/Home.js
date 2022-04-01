@@ -11,6 +11,10 @@ import Box from '@material-ui/core/Box';
 // import ProfileBtn from "../components/ProfileBtn";
 // import ShareableBtn from "../components/ShareableBtn";
 // import ReactPlayer from "react-player";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,12 +27,31 @@ const useStyles = makeStyles((theme) => ({
   // },
 }));
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      light: '#58a5f0',
+      main: '#0277bd',
+      dark: '#004c8c',
+      contrastText: '#ffffff',
+    },
+    secondary: {
+      light: '#e2f1f8',
+      main: '#b0bec5',
+      dark: '#808e95',
+      contrastText: '#000000',
+    }
+  }
+});
+
   export default function Home() {
     const classes = useStyles();
 
     return (
-      <div className={classes.root}>
-        <Grid container direction='column' alignItems='center' spacing={2}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+      <div style={{background: '#90a4ae'}} className={classes.root}>
+        <Grid container direction='column' alignItems='center' spacing={0}>
           <Grid item xs={12}>
             <Box m={2} p={4}>
                 <img src="/Images/ample-sample-logo.gif" alt='Ample Sample Animated Logo' width="500" height="500" />
@@ -36,5 +59,9 @@ const useStyles = makeStyles((theme) => ({
           </Grid>
         </Grid>
       </div>
+      </ThemeProvider>
     );
   }
+
+  // Green #c8e6c9
+// Grey #90a4ae

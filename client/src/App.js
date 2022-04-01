@@ -11,6 +11,8 @@ import Profile from './pages/Profile';
 import GenerateSurvey from './pages/GenerateSurvey';
 import Analytics from './pages/Analytics';
 import FillSurvey from './pages/FillSurvey';
+import CssBaseline from '@mui/material/CssBaseline';
+
 
 import Nav from './components/Nav';
 import Footer from './components/Footer';
@@ -56,6 +58,8 @@ console.log(token)
 function App() {
 
   return (
+    <React.Fragment>
+    <CssBaseline />
     <ApolloProvider client={client}>
       <ThemeProvider theme={theme}>
         <Router>
@@ -104,6 +108,8 @@ function App() {
         </Router>
       </ThemeProvider>
     </ApolloProvider>
+    </React.Fragment>
+
   );
  }
 export default App;

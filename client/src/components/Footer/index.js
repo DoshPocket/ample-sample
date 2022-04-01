@@ -31,7 +31,7 @@ const theme = createTheme({
 
     return (
         <ThemeProvider theme={theme}>
-            <Box sx={{mb: 0, mt: 2, px: 2, bgcolor: 'primary.light' }} pb={{xs: 5, sm:8 }}>
+            <Box sx={{mb: 0, mt: 2, px: 2, bgcolor: '#2F4B8A', color: '#ffffff'}} pb={{xs: 5, sm:8 }}>
                 <Container  maxWidth='lg'> 
                     <Grid  container direction='column' alignItems='center' spacing={2} >
                         <Grid item>

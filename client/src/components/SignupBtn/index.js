@@ -16,7 +16,7 @@ export default function SignupBtn() {
       <div>
         <Button
           variant="contained"
-          color="primary"
+          style={{background: "#002984", color: "#ffffff"}}
           href="/signup"
           className={classes.button}
           startIcon={<SignupIcon />}
