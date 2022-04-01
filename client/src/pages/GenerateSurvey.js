@@ -10,7 +10,7 @@ import DynamicQuestion from '../components/GenerateForm';
 import SaveBtn from '../components/SaveBtn';
 import ShareableBtn from '../components/ShareableBtn';
 import { useMutation } from '@apollo/react-hooks';
-import { CREATE_SURVEY } from '../utils/mutations';
+import { CREATE_SURVEY } from '../utility/mutations';
 // import { CREATE_QUESTION } from '../utils/mutations';
 // import { CREATE_CHOICE } from '../utils/mutations';
 // import { GET_ME } from '../utils/queries';

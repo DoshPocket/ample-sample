@@ -1,5 +1,7 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
+import { useContext } from 'react';
+import { AuthContext } from '../context/authContext';
 // import Nav from '../components/Nav';
 // import DeleteBtn from '../components/DeleteBtn';
 // import Container from '@material-ui/core/Container';
@@ -45,6 +47,7 @@ const theme = createTheme({
 });
 
   export default function Home() {
+    const { user, logout } = useContext(AuthContext);
     const classes = useStyles();
 
     return (
@@ -56,6 +59,17 @@ const theme = createTheme({
             <Box m={2} p={4}>
                 <img src="/Images/ample-sample-logo.gif" alt='Ample Sample Animated Logo' width="500" height="500" />
             </Box>
+            <>
+        {user ?
+            <>
+            <h2>{user.email} is logged in</h2>
+            </>
+            :
+            <>
+            <p>Please login or signup</p>
+            </>
+        }
+        </>
           </Grid>
         </Grid>
       </div>
