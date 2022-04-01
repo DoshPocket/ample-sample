@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 // import SaveBtn from "../components/SaveBtn";
 // import ShareableBtn from "../components/ShareableBtn";
 
@@ -16,6 +17,8 @@ const useStyles = makeStyles((theme) => ({
   // },
 }));
 
+
+
   export default function GenerateSurvey() {
     const classes = useStyles();
 
@@ -24,9 +27,11 @@ const useStyles = makeStyles((theme) => ({
         <Grid container spacing={2} alignItems="stretch">
           <Grid item xs={12}>
             <Container>
-              <div>
-                {/* FILL ME WITH A SCROLLABLE WINDOW, FORM TO CREATE SURVEY, A SAVE BUTTON, AND A SHAREABLE BUTTON AT THE END!!!! */}
-              </div>
+              <Box height="75vh" display="flex" flexDirection="column">
+                <Box flex={1} overflow="auto">
+                  {/* FILL ME WITH PROMPTS TO CREATE A SURVEY!!!! */}
+                </Box>
+              </Box>
             </Container>
           </Grid>
         </Grid>
