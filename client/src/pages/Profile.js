@@ -6,6 +6,8 @@ import Grid from '@material-ui/core/Grid';
 // import Auth from "../utils/auth";
 import Box from '@material-ui/core/Box';
 // import DeleteBtn from '../components/DeleteBtn';
+import SurveyCard from "../components/SurveyCard";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -48,14 +50,44 @@ export default function Profile() {
       <Grid container spacing={2} alignItems="stretch">
         <Grid item xs={12}>
           <Container>
-            <Box height="75vh" display="flex" flexDirection="column">
-              <Box flex={1} overflow="auto">
+            <Box height="75vh" display="flex" flexDirection="column" >
+              <Box item flex={1} overflow="auto">
+                <Box>
+                  <Grid container spacing={4}>
+                    <Grid item xs={12} md={6} lg={4}>
+                <SurveyCard />
+                </Grid>
+                <Grid item xs={12} md={6} lg={4}>
+                <SurveyCard />
+                </Grid>
+                <Grid item xs={12} md={6} lg={4}>
+                <SurveyCard />
+                </Grid>
+                <Grid item xs={12} md={6} lg={4}>
+                <SurveyCard />
+                </Grid>
+                <Grid item xs={12} md={6} lg={4}>
+                <SurveyCard />
+                </Grid>
+                <Grid item xs={12} md={6} lg={4}>
+                <SurveyCard />
+                </Grid>
+                <Grid item xs={12} md={6} lg={4}>
+                <SurveyCard />
+                </Grid>
+                <Grid item xs={12} md={6} lg={4}>
+                <SurveyCard />
+                </Grid>
+
                 {/* FILL ME WITH PERSONAL INFORMATION!!!!! */}
                 {/* <ul>
                   {data.me.map((coordinator) => (
                     <li key={coordinator.id}>{coordinator.email}</li>
                   ))}
                 </ul> */}
+          
+                  </Grid>
+                </Box>
               </Box>
             </Box>
           </Container>
