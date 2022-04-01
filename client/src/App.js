@@ -47,7 +47,6 @@ function App() {
 
   return (
     <React.Fragment>
-      <Router>
     <CssBaseline />
       <ThemeProvider theme={theme}>
           <div>
@@ -93,7 +92,6 @@ function App() {
              </div>
           <Footer />
       </ThemeProvider>
-      </Router>
     </React.Fragment>
 
   );
