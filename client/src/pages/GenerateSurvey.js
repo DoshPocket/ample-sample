@@ -1,6 +1,6 @@
 // data not saving to db yet
 import React, { useState } from 'react';
-import { useQuery } from '@apollo/react-hooks';
+// import { useQuery } from '@apollo/react-hooks';
 import { Form, Alert } from "react-bootstrap";
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -13,7 +13,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { CREATE_SURVEY } from '../utils/mutations';
 // import { CREATE_QUESTION } from '../utils/mutations';
 // import { CREATE_CHOICE } from '../utils/mutations';
-import { GET_ME } from '../utils/queries';
+// import { GET_ME } from '../utils/queries';
 
 // import Auth from '../utils/auth';
 
@@ -31,14 +31,14 @@ const useStyles = makeStyles((theme) => ({
   export default function GenerateSurvey() {
  
   const classes = useStyles();
+// removed [setSurveyTitle, setSurveyDescription, setSurveyQuestions] from useState declarations temporarily
+  const [surveyTitle] = useState("");
+  const [surveyDescription] = useState("");
+  const [surveyQuestions] = useState([]);
+  const [surveyChoices] = useState([]);
 
-  const [surveyTitle, setSurveyTitle] = useState("");
-  const [surveyDescription, setSurveyDescription] = useState("");
-  const [surveyQuestions, setSurveyQuestions] = useState([]);
-  const [surveyChoices, setSurveyChoices] = useState([]);
-
-  const { loading, data } = useQuery(GET_ME);
-  const coordData = data?.me || {};
+  // const { loading, data } = useQuery(GET_ME);
+  // const coordData = data?.me || {};
   
   const [createSurvey] = useMutation(CREATE_SURVEY);
   // const [createQuestion] = useMutation(CREATE_QUESTION);
@@ -90,9 +90,9 @@ const useStyles = makeStyles((theme) => ({
     }
   };
 
-  if (loading) {
-    return <h2>LOADING...</h2>;
-  }
+  // if (loading) {
+  //   return <h2>LOADING...</h2>;
+  // }
 
   return (
         <div className={classes.root}>

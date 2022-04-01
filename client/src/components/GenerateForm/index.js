@@ -2,17 +2,17 @@
 
 // react imports
 import React, { useState } from 'react';
-import { useMutation } from '@apollo/react-hooks';
-import { CREATE_QUESTION } from '../../utils/mutations';
-import { CREATE_CHOICE } from '../../utils/mutations';
+// import { useMutation } from '@apollo/react-hooks';
+// import { CREATE_QUESTION } from '../../utils/mutations';
+// import { CREATE_CHOICE } from '../../utils/mutations';
 
 // style library imports
 import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
-import { modalUnstyledClasses } from '@mui/material';
-import { buildQueryFromSelectionSet } from '@apollo/client/utilities';
+// import { modalUnstyledClasses } from '@mui/material';
+// import { buildQueryFromSelectionSet } from '@apollo/client/utilities';
 //import Icon from '@material-ui/core/Icon';
  
 
@@ -22,19 +22,20 @@ const DynamicQuestion = ({ question, choices, setQuestion, setChoices }) => {
   const [newQuestFields, setQuestFields] = useState([]);
   const [newChoiceFields, setChoiceFields] = useState([]);
   
-  const [createChoice] = useMutation(CREATE_CHOICE);
-  const [createQuestion] = useMutation(CREATE_QUESTION);
+  // const [createChoice] = useMutation(CREATE_CHOICE);
+  // const [createQuestion] = useMutation(CREATE_QUESTION);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    createQuestion({ variables: { question: questionText } });
-    createChoice({ variables: { choice: choicesText } });
-    setQuestion(questionText);
-    setChoices(choicesText);
-  };
+  // submit does not occur within this component but need to leave here for now to avoid errors and test db seeding
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   createQuestion({ variables: { question: questionText } });
+  //   createChoice({ variables: { choice: choicesText } });
+  //   setQuestion(questionText);
+  //   setChoices(choicesText);
+  // };
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
+    const { value } = event.target;
     setQuestionText(value);
   };
 
@@ -57,7 +58,7 @@ const DynamicQuestion = ({ question, choices, setQuestion, setChoices }) => {
   };  
 
   const handleChoiceInputChange = (event) => {
-    const { name, value } = event.target;
+    const { value } = event.target;
     setChoicesText(value);
   };
 
