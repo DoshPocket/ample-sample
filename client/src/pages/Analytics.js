@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 // import DeleteBtn from '../components/DeleteBtn';
 
 const useStyles = makeStyles((theme) => ({
@@ -20,12 +21,14 @@ const useStyles = makeStyles((theme) => ({
 
     return (
       <div className={classes.root}>
-        <Grid container spacing={2}>
+        <Grid container spacing={2}  alignItems="stretch">
           <Grid item xs={12}>
             <Container>
-              <Grid container alignItems='center'>
-                {/* FILL ME WITH A SCROLLABLE WINDOW, A GENERATED SURVEY AND SURVEY ANALYTICS!!!*/}
-              </Grid>
+                <Box height="75vh" display="flex" flexDirection="column">
+                  <Box flex={1} overflow="auto">
+                                    {/* FILL ME WITH A SCROLLABLE WINDOW, A GENERATED SURVEY AND SURVEY ANALYTICS!!!*/}
+                  </Box>
+                </Box>
             </Container>
           </Grid>
         </Grid>
