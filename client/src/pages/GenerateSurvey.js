@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     const classes = useStyles();
 
     return (
-      <div className={classes.root}>
+      <div style={{background: '#90a4ae'}} className={classes.root}>
         <Grid container spacing={2} alignItems="stretch">
           <Grid item xs={12}>
             <Container>

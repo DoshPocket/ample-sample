@@ -19,9 +19,9 @@ const map={
   '/': [ <LoginBtn />, <SignupBtn /> ],
   '/template': [ <GenerateBtn />, <LogoutBtn /> ],
   '/profile': [ <GenerateBtn />, <LogoutBtn /> ],
-  '/GenerateSurvey': [ <ProfileBtn />, <LogoutBtn /> ],
-  '/Analytics': [ <GenerateBtn />, <ProfileBtn />, <LogoutBtn /> ],
-  '/FillSurvey': [ <LoginBtn />, <SignupBtn /> ],
+  '/generate': [ <ProfileBtn />, <LogoutBtn /> ],
+  '/analytics': [ <GenerateBtn />, <ProfileBtn />, <LogoutBtn /> ],
+  '/fill': [ <LoginBtn />, <SignupBtn /> ],
 }
 
 
