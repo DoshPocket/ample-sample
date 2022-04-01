@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+// import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
 import Home from './pages/Home';
 import SurveyTemplate from './components/SurveyTemplate';
 import NotFound from './pages/NotFound';
-import Login from './pages/Login';
-import SignupForm from './pages/SignupForm';
+import Login from './pages/login';
+import Register from './pages/register';
 import Profile from './pages/Profile';
 import GenerateSurvey from './pages/GenerateSurvey';
 import Analytics from './pages/Analytics';
@@ -41,28 +41,14 @@ const theme = createTheme({
   }
 });
 
-const client = new ApolloClient({
-  request: (operation) => {
-    const token = localStorage.getItem("id_token");
-console.log(token)
-    operation.setContext({
-      headers: {
-        authorization: token ? `Bearer ${token}` : "",
-      },
-    });
-  },
-  uri: "/graphql",
-  cache: new InMemoryCache(),
-});
+
 
 function App() {
 
   return (
     <React.Fragment>
     <CssBaseline />
-    <ApolloProvider client={client}>
       <ThemeProvider theme={theme}>
-        <Router>
           <div>
             <Nav />
                <Routes>
@@ -79,8 +65,8 @@ function App() {
                     element={<Login />}
                   />
                   <Route
-                    path="/signup"
-                    element={<SignupForm />}
+                    path="/register"
+                    element={<Register />}
                   />
                     <Route
                     path="/profile"
@@ -105,9 +91,7 @@ function App() {
                 </Routes>
              </div>
           <Footer />
-        </Router>
       </ThemeProvider>
-    </ApolloProvider>
     </React.Fragment>
 
   );

@@ -1,105 +1,85 @@
-import React, { useState } from "react";
-import { Form, Button, Alert } from "react-bootstrap";
-import { LOGIN_USER } from "../utils/mutations";
-import Auth from "../utils/auth";
-import { useMutation } from "@apollo/react-hooks";
+import {useContext, useState} from 'react';
+import { AuthContext } from '../context/authContext';
+import { useForm } from '../utility/hooks';
+import { useMutation } from '@apollo/react-hooks';
+import { TextField, Button, Container, Stack, Alert } from '@mui/material';
+import { gql } from 'graphql-tag';
+import { useNavigate } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
-import SubmitBtn from "../components/SubmitBtn";
 
-const LoginForm = () => {
-  const [userFormData, setUserFormData] = useState({ email: "", password: "" });
-  const [validated] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
 
-  const [loginUser] = useMutation(LOGIN_USER);
+const LOGIN_USER = gql`
+mutation login(
+$loginInput: LoginInput
+) {
+    loginUser(
+        loginInput: $loginInput
+    ) {
+        email
+        username
+        token
+    }
+}
+`
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setUserFormData({ ...userFormData, [name]: value });
-  };
+function Login(props) {
+    let navigate = useNavigate();
+    const context = useContext(AuthContext);
+    const [errors, setErrors] = useState([]);
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
+    function loginUserCallback() {
+        console.log("Callback hit")
+        loginUser();
     }
 
-    try {
-      const { data } = await loginUser({
-        variables: { ...userFormData },
-      });
-
-      Auth.login(data.login.token);
-      window.alert("You logged in");
-    } catch (err) {
-      console.error(err);
-      setShowAlert(true);
-    }
-
-    setUserFormData({
-      email: "",
-      password: "",
+    const { onChange, onSubmit, values } = useForm(loginUserCallback, {
+        email: '',
+        password: ''
     });
-  };
+
+    const [ loginUser, { loading }] = useMutation(LOGIN_USER, {
+        update(proxy, { data: { loginUser: userData }}) {
+            context.login(userData);
+            navigate('/');
+        },
+        onError({ graphQLErrors }) {
+            setErrors(graphQLErrors);
+        },
+        variables: { loginInput: values }
+      });
 
   return (
     <>
       <Box style={{background: '#90a4ae'}} height="75vh" display="flex" flexDirection="column">
         <Box flex={1} overflow="auto">
-          <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-            <Alert
-              dismissible
-              onClose={() => setShowAlert(false)}
-              show={showAlert}
-              variant="danger"
-            >
-              Something went wrong with your login credentials!
-            </Alert>
-            <Form.Group>
-              <Form.Label htmlFor="email">Email</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Email"
-                name="email"
-                onChange={handleInputChange}
-                value={userFormData.email}
-                required
-              />
-              <Form.Control.Feedback type="invalid">
-                Email is required!
-              </Form.Control.Feedback>
-            </Form.Group>
-
-            <Form.Group>
-              <Form.Label htmlFor="password">Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="password"
-                name="password"
-                onChange={handleInputChange}
-                value={userFormData.password}
-                required
-              />
-              <Form.Control.Feedback type="invalid">
-                Password is required!
-              </Form.Control.Feedback>
-            </Form.Group>
-            <SubmitBtn />
-            {/* <Button
-              disabled={!(userFormData.email && userFormData.password)}
-              type="submit"
-              variant="success"
-            >
-              Submit
-            </Button> */}
-          </Form>
+        <Container space={2} maxWidth="sm">
+            <h3>Login</h3>
+            <p>This is the login page, login below</p>
+            <Stack spacing={2} paddingBottom={2}>
+                    <TextField
+                    label="Email"
+                    name="email"
+                    onChange={onChange}
+                    />
+                    <TextField
+                    label="Password"
+                    name="password"
+                    onChange={onChange}
+                    />
+            </Stack>
+            {errors.map(function(error){
+                 return (
+                    <Alert severity="error">
+                      {error.message}
+                    </Alert>
+                )
+             })}
+            <Button variant="contained" onClick={onSubmit}>Login</Button>
+            </Container>
         </Box>
       </Box>
     </>
   );
 };
 
-export default LoginForm;
+export default Login;

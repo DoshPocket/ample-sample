@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/ampleDB', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://ampleSample1:ampleSample1@cluster0.gc61g.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   // useCreateIndex: true,

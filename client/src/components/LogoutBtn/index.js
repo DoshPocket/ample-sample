@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import LogoutIcon from '@mui/icons-material/Logout';
-import Auth from '../../utils/auth';
+import Auth from '../../utility/auth';
 const useStyles = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(1),
