@@ -1,14 +1,18 @@
-const User = require('../../models/User');
-const {
-    ApolloServer,
-    gql,
-    UserInputError
-} = require('apollo-server');
+const User = require('../../models/user');
+// const {
+//     ApolloServer,
+//     gql,
+//     UserInputError
+// } = require('apollo-server');
 const { ApolloError } = require('apollo-server-errors');
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+// const { AuthContext } = require('../../../client/src/context/authContext');
 
 module.exports = {
+    Query: {
+        user: (_, {ID}) => User.findById(ID)
+    },
     Mutation: {
         async registerUser(_, {registerInput: {username, email, password} }) {
             /* Do input validation
@@ -75,9 +79,6 @@ module.exports = {
             } else {
                 throw new ApolloError('Incorrect password', 'INCORRECT_PASSWORD');
             }
-        }
-    },
-    Query: {
-        user: (_, {ID}) => User.findById(ID)
+        },
     }
-}
+};
