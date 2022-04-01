@@ -57,9 +57,9 @@ function App() {
                     element={<Home />}
                   />
                   <Route
-                    path="/template"
-                    element={<SurveyTemplate />}
-                  />
+                    exact path="/template"
+                    // element={<SurveyTemplate />}
+                  ><SurveyTemplate /></Route>
                   <Route
                     path="/login"
                     element={<Login />}
