@@ -83,7 +83,7 @@ export default function Nav() {
             <IconButton edge="start" className={classes.menuButton}  color="inherit" aria-label="menu">
             </IconButton>
             <a href='/'>
-              <img src='/Images/ample-sample-logo.png' alt='Ample Sample Logo' width="80" height="80"/>
+              <img src='./images/ample-sample-logo.png' alt='Ample Sample Logo' width="80" height="80"/>
               </a>
           </Typography>
             {map[location.pathname] && map[location.pathname].map((button, i) => (
