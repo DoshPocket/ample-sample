@@ -9,12 +9,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SuvbmitBtn() {
+export default function SubmitBtn() {
     const classes = useStyles();
   
     return (
       <div>
         <Button
+          type="submit"
           variant="contained"
           style={{background: "#002984", color: "#ffffff"}}
           className={classes.button}

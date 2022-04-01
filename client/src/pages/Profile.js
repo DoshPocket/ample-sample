@@ -44,7 +44,7 @@ export default function Profile() {
 //   if (error) return <pre>{error.message}</pre>
 
   return (
-    <div className={classes.root}>
+    <div style={{background: '#90a4ae'}} className={classes.root}>
       <Grid container spacing={2} alignItems="stretch">
         <Grid item xs={12}>
           <Container>

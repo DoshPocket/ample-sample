@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/react-hooks";
 import { ADD_COORDINATOR } from "../utils/mutations";
 import Auth from "../utils/auth";
 import Box from '@material-ui/core/Box';
+import SubmitBtn from "../components/SubmitBtn";
 
 const SignupForm = () => {
   const [coordinatorFormData, setCoordinatorFormData] = useState({
@@ -53,7 +54,7 @@ const SignupForm = () => {
 
   return (
     <>
-      <Box height="75vh" display="flex" flexDirection="column">
+      <Box style={{background: '#90a4ae'}} height="75vh" display="flex" flexDirection="column">
         <Box flex={1} overflow="auto">
           <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
             <Alert
@@ -136,7 +137,8 @@ const SignupForm = () => {
               />
             </Form.Group>
 
-            <Button
+            <SubmitBtn />
+            {/* <Button
               disabled={
                 !(
                     coordinatorFormData.firstName &&
@@ -150,7 +152,7 @@ const SignupForm = () => {
               variant="success"
             >
               Submit
-            </Button>
+            </Button> */}
           </Form>
         </Box>
      </Box>
