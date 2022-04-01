@@ -2,6 +2,7 @@ const { Schema } = require('mongoose');
 const questionSchema = require('./question');
 
 const surveySchema = new Schema({
+  _id: Schema.Types.ObjectId,
   title: {
     type: String,
     required: true,

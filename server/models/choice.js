@@ -1,6 +1,7 @@
 const { Schema } = require('mongoose');
 
 const choiceSchema = new Schema({
+    _id: Schema.Types.ObjectId,
     choice: {
         type: String,
         required: true

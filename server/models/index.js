@@ -1,5 +1,6 @@
-const Question = require('./question');
-const Coordinator = require('./Coordinator');
-const Survey = require('./Survey');
+const questionSchema = require('./question');
+const User = require('./user');
+const surveySchema = require('./survey');
+const choiceSchema = require('./choice');
 
-module.exports = { Question, Coordinator, Survey };
+module.exports = { User, surveySchema, questionSchema, choiceSchema };

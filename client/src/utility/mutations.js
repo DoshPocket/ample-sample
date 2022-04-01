@@ -1,36 +1,39 @@
 import gql from 'graphql-tag';
 
-export const ADD_COORDINATOR = gql`
-mutation addCoordinator($firstName: String!, $lastName: String!, $email: String!, $password: String!, $company: String) {
-  addCoordinator(firstName: $firstName, lastName: $lastName email: $email, password: $password, company: $company) {
+export const REGISTER_USER = gql`
+mutation registerUser($registerInput: RegisterInput!) {
+  registerUser(registerInput: $registerInput) {
     token
-    coordinator {
+    user {
       _id
+      username
       email
+      company
     }
   }
 }
 `;
 
 export const LOGIN_USER = gql`
-  mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
+  mutation loginUser($loginInput: LoginInput!) {
+    loginUser(loginInput: $loginInput) {
       token
-      coordinator {
-        _id
-        email
+      user {
+        _id,
+        email, 
+        company,
+        savedSurveys
       }
     }
   }
 `;
 
 export const CREATE_SURVEY = gql`
-  mutation createSurvey($title: String!, $description: String!, $number_of_questions: Int!, $input: savedQuestion!) {
-    createSurvey(title: $title, description: $description, number_of_questions: $number_of_questions, input: $input) {
+  mutation createSurvey($title: String!, $description: String!, $input: savedQuestion!) {
+    createSurvey(title: $title, description: $description, input: $input) {
       _id
       title
       description
-      number_of_questions 
       savedQuestion {
         _id
         question
@@ -50,7 +53,6 @@ export const DELETE_SURVEY = gql`
       _id
       title
       description
-      number_of_questions 
       savedQuestion {
         _id
         question

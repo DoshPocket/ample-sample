@@ -1,6 +1,6 @@
 // data not saving to db yet
 import React, { useState } from 'react';
-// import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/react-hooks';
 import { Form, Alert } from "react-bootstrap";
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -11,11 +11,9 @@ import SaveBtn from '../components/SaveBtn';
 import ShareableBtn from '../components/ShareableBtn';
 import { useMutation } from '@apollo/react-hooks';
 import { CREATE_SURVEY } from '../utility/mutations';
-// import { CREATE_QUESTION } from '../utils/mutations';
-// import { CREATE_CHOICE } from '../utils/mutations';
-// import { GET_ME } from '../utils/queries';
-
-// import Auth from '../utils/auth';
+import { CREATE_QUESTION } from '../utility/mutations';
+import { CREATE_CHOICE } from '../utility/mutations';
+import { GET_ME } from '../utility/queries';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,18 +29,17 @@ const useStyles = makeStyles((theme) => ({
   export default function GenerateSurvey() {
  
   const classes = useStyles();
-// removed [setSurveyTitle, setSurveyDescription, setSurveyQuestions] from useState declarations temporarily
-  const [surveyTitle] = useState("");
-  const [surveyDescription] = useState("");
-  const [surveyQuestions] = useState([]);
+  const [surveyTitle, setSurveyTitle] = useState("");
+  const [surveyDescription, setSurveyDescription] = useState("");
+  const [surveyQuestions, setSurveyQuestions] = useState([]);
   const [surveyChoices] = useState([]);
 
-  // const { loading, data } = useQuery(GET_ME);
-  // const coordData = data?.me || {};
+  const { loading, data } = useQuery(GET_ME);
+  const coordData = data?.me || {};
   
   const [createSurvey] = useMutation(CREATE_SURVEY);
-  // const [createQuestion] = useMutation(CREATE_QUESTION);
-  // const [createChoice] = useMutation(CREATE_CHOICE);
+  const [createQuestion] = useMutation(CREATE_QUESTION);
+  const [createChoice] = useMutation(CREATE_CHOICE);
     
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
@@ -90,9 +87,9 @@ const useStyles = makeStyles((theme) => ({
     }
   };
 
-  // if (loading) {
-  //   return <h2>LOADING...</h2>;
-  // }
+  if (loading) {
+    return <h2>LOADING...</h2>;
+  }
 
   return (
         <div className={classes.root}>
@@ -142,21 +139,6 @@ const useStyles = makeStyles((theme) => ({
                         </Form.Control.Feedback>
                       </Form.Group>
                       <br />
-                    {/* <Form.Group>
-                      <Form.Label htmlFor='question'>What is the question</Form.Label>
-                      <Form.Control
-                        type='text'
-                        placeholder='type your question here'
-                        name='description'
-                        onChange={handleInputChange}
-                        value={surveyForm.questions}
-                        required
-                      />
-                      <Form.Control.Feedback type='invalid'>
-                      A question is required for survey to generate.
-                      </Form.Control.Feedback>
-                    </Form.Group> */}
-                    {/* // add dynamicQuestion component here */}
                       < DynamicQuestion />
                     </Form>
                     < SaveBtn />
