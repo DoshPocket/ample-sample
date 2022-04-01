@@ -17,10 +17,10 @@ export default function SignupBtn() {
         <Button
           variant="contained"
           style={{background: "#002984", color: "#ffffff"}}
-          href="/signup"
+          href="/register"
           className={classes.button}
           startIcon={<SignupIcon />}
-          onClick={() => {window.location.href="/signup" }}
+          onClick={() => {window.location.href="/register" }}
         >
         Signup
       </Button>
