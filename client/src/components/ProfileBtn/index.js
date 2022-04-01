@@ -16,6 +16,7 @@ export default function ProfileBtn() {
       <div>
         <Button
           variant="contained"
+          href="/profile"
           style={{background: "#002984", color: "#ffffff"}}
           className={classes.button}
           startIcon={<ProfileIcon />}
