@@ -1,0 +1,14 @@
+[
+    { 
+      "choice": "Less than a month"
+    },
+    {
+      "choice": "1-6 months"
+    },
+    {
+      "choice": "7-12 months"
+    },
+    {
+      "choice": "1-3 years"
+    }
+]
