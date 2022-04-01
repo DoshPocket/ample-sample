@@ -13,16 +13,16 @@ const theme = createTheme({
       box: '#58a5f0',
       },
     primary: {
-      light: '#58a5f0',
-      main: '#0277bd',
-      dark: '#004c8c',
+      light: '#4f5b62',
+      main: '#263238',
+      dark: '#000a12',
       contrastText: '#ffffff',
     },
     secondary: {
-      light: '#e2f1f8',
-      main: '#b0bec5',
-      dark: '#808e95',
-      contrastText: '#000000',
+      light: '#757de8',
+      main: '#3f51b5',
+      dark: '#002984',
+      contrastText: '#ffffff',
     }
   }
 });
@@ -41,7 +41,7 @@ export default function LoginBtn() {
       <div>
         <Button
           variant="contained"
-          color="primary"
+          style={{background: "#002984", color: "#ffffff"}}
           href="/login"
           className={classes.button}
           startIcon={<LoginIcon />}

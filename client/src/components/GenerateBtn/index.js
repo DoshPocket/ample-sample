@@ -18,7 +18,7 @@ export default function GenerateBtn() {
       <div>
         <Button
           variant="contained"
-          color="primary"
+          style={{background: "#002984", color: "#ffffff"}}
           href='/generate'
           className={classes.button}
           startIcon={<GenerateIcon />}

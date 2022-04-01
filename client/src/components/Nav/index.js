@@ -4,6 +4,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import CssBaseline from '@mui/material/CssBaseline';
 // import Button from '@material-ui/core/Button';
 // import BasicModal from '../BasicModal';
 import IconButton from '@material-ui/core/IconButton';
@@ -46,16 +47,16 @@ const useStyles = makeStyles((theme) => ({
         box: '#58a5f0',
         },
       primary: {
-        light: '#58a5f0',
-        main: '#0277bd',
-        dark: '#004c8c',
+        light: '#4f5b62',
+        main: '#263238',
+        dark: '#000a12',
         contrastText: '#ffffff',
       },
       secondary: {
-        light: '#e2f1f8',
-        main: '#b0bec5',
-        dark: '#808e95',
-        contrastText: '#000000',
+        light: '#757de8',
+        main: '#3f51b5',
+        dark: '#002984',
+        contrastText: '#ffffff',
       }
     }
   });
@@ -68,8 +69,9 @@ export default function Nav() {
 
     return (
       <ThemeProvider theme={theme}>
+                <CssBaseline />
       <div className={classes.root}>
-        <AppBar sx={{bgcolor: 'primary.light'}} position="static">
+        <AppBar style={{background: '#2F4B8A'}} position="static">
           <Toolbar >
             <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             </IconButton>

@@ -16,7 +16,7 @@ export default function ProfileBtn() {
       <div>
         <Button
           variant="contained"
-          color="primary"
+          style={{background: "#002984", color: "#ffffff"}}
           className={classes.button}
           startIcon={<ProfileIcon />}
         >
