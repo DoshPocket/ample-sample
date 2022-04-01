@@ -1,33 +1,34 @@
 const db = require('../config/connection');
 // Coordinator great-grandparent/ Model
-const { Coordinator } = require('../models');
-const coordSeed = require('./coordData.json');
-// // Survey grandparent / Schema
-// const { Survey } = require('../models');
+const { User } = require('../models');
+const userSeed = require('./userData.json');
+// // surveySchema grandparent / Schema
+// const { surveySchema } = require('../models');
 // const surveySeed = require('./surveyData.json');
-// // Question parent / Schema
-// const { Question } = require('../models');
+// // questionSchema parent / Schema
+// const { questionSchema } = require('../models');
 // const questionSeed = require('./questionData.json');
-// // Choices child / Schema
-// const { Choices } = require('../models');
+// // choiceSchema child / Schema
+// const { choiceSchema } = require('../models');
 // const choicesSeed = require('./choicesData.json');
 
 db.once('open', async () => {
     try {
-      await Coordinator.deleteMany({});
-      await Coordinator.create(coordSeed);
+      await User.deleteMany({});
+      await User.create(userSeed);
       console.log('Coordinators seeded!');
-      
-      // await Survey.deleteMany({});
-      // await Survey.create(surveySeed);
+ 
+// unable to batch delete/add schemas that are mutatations
+      // await surveySchema.deleteMany();
+      // await surveySchema.create(surveySeed);
       // console.log('Surveys seeded!');
 
-      // await Question.deleteMany({});
-      // await Question.create(questionSeed);
+      // await questionSchema.deleteMany({});
+      // await questionSchema.create(questionSeed);
       // console.log('Questions seeded!');
 
-      // await Choices.deleteMany({});
-      // await Choices.create(answerSeed);
+      // await choiceSchema.deleteMany({});
+      // await choiceSchema.create(choicesSeed);
       // console.log('Answers seeded!');
 
       process.exit(0);
@@ -35,4 +36,3 @@ db.once('open', async () => {
       throw err;
     }
 });
-
