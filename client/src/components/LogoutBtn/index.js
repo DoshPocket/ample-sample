@@ -1,16 +1,29 @@
-import React from 'react';
+import { React, useContext } from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { Navigate } from 'react-router-dom';
+import { AuthContext } from '../../context/authContext';
 // import Auth from '../../utility/auth';
-const useStyles = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(1),
-  },
-}));
+
 
 export default function LogoutBtn() {
-    const classes = useStyles();
+  const { user, logout } = useContext(AuthContext);
+  const onLogout = () => {
+    logout();
+    console.log("not working")
+    Navigate('/');
+  };
+  
+  const useStyles = makeStyles((theme) => ({
+    button: {
+      margin: theme.spacing(1),
+    },
+  }));
+
+  const classes = useStyles();
+
+
   
     return (
       <div>
@@ -19,7 +32,8 @@ export default function LogoutBtn() {
           style={{background: "#002984", color: "#ffffff"}}
           className={classes.button}
           startIcon={<LogoutIcon />}
-          // onClick={Auth.logout}
+          href="/"
+          onClick={onLogout}
         >
         Logout
       </Button>
