@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import SurveyTemplate from './components/SurveyTemplate';
 import NotFound from './pages/NotFound';
-import Login from './pages/login';
+import Login from './pages/Login';
 import Register from './pages/register';
 import Profile from './pages/Profile';
 import GenerateSurvey from './pages/GenerateSurvey';
