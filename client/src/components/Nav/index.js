@@ -78,12 +78,12 @@ export default function Nav() {
     <div className={classes.root}>
       <AppBar style={{background: '#2F4B8A'}} position="static">
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            <IconButton edge="start" className={classes.menuButton}  color="inherit" aria-label="menu">
+          <Typography variant="h6" className={classes.title} style={{paddingTop: '10px', marginLeft: '-20px'}}>
+            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             </IconButton>
             <a href='/'>
               <img src='/Images/ample-sample1.png' alt='Ample Sample Logo' width="80" height="80"/>
-              </a>
+            </a>
           </Typography>
             {map[location.pathname] && map[location.pathname].map((button, i) => (
               <span key={i}>

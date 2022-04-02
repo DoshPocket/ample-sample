@@ -40,7 +40,7 @@ const DynamicQuestion = ({ question, choices, setQuestion, setChoices }) => {
   };
 
   const handleAddQuestion = async () => {
-    if (newQuestFields.length <= 8) {
+    if (newQuestFields.length <= 9) {
       setQuestFields([...newQuestFields, <TextField
         key={newQuestFields.length}
         name="question"
@@ -69,7 +69,7 @@ const DynamicQuestion = ({ question, choices, setQuestion, setChoices }) => {
       */
     if (newQuestFields.length <= 9) {
       newQuestFields.forEach(() => {
-        if (newChoiceFields.length <= 4) {
+        if (newChoiceFields.length <= 3) {
           setChoiceFields([...newChoiceFields, <TextField
           key={newChoiceFields.length}
           name="choice"
