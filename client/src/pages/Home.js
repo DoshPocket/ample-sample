@@ -57,7 +57,7 @@ const theme = createTheme({
         <Grid container direction='column' alignItems='center' spacing={0}>
           <Grid item xs={12}>
             <Box m={2} p={4}>
-                <img src="/Images/ample-sample-logo.gif" alt='Ample Sample Animated Logo' width="500" height="500" />
+                <img src="/Images/ample-sample-logo2.gif" alt='Ample Sample Animated Logo' width="500" height="500" />
             </Box>
             <>
         {user ?

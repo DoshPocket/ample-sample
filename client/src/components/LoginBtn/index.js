@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function LoginBtn() {
+export default function LoginBtn(props) {
     const classes = useStyles();
   
     return (
@@ -42,10 +42,10 @@ export default function LoginBtn() {
         <Button
           variant="contained"
           style={{background: "#002984", color: "#ffffff"}}
-          href="/login"
+          href={props.redirect}
           className={classes.button}
           startIcon={<LoginIcon />}
-          onClick={() => {window.location.href="/login" }}
+          onClick={props.handleClick}
         >
         Login
       </Button>
