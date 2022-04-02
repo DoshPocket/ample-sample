@@ -4,7 +4,6 @@ import { useQuery } from '@apollo/react-hooks';
 import { makeStyles } from '@material-ui/core/styles';
 import DynamicQuestion from '../components/GenerateForm';
 import SaveBtn from '../components/SaveBtn';
-// import { Form, Alert } from "react-bootstrap";
 import ShareableBtn from '../components/ShareableBtn';
 import { useMutation } from '@apollo/react-hooks';
 import { CREATE_SURVEY } from '../utility/mutations';
@@ -24,16 +23,17 @@ const useStyles = makeStyles((theme) => ({
   // },
 }));
   
-  export default function GenerateSurvey() {
+export default function GenerateSurvey() {
  
   const classes = useStyles();
+
   const [surveyTitle, setSurveyTitle] = useState('');
   const [surveyDescription, setSurveyDescription] = useState('');
   const [surveyQuestions, setSurveyQuestions] = useState([]);
   const [surveyChoices] = useState([]);
 
   const { loading, data } = useQuery(GET_ME);
-  const coordData = data?.me || {};
+  const userData = data?.me || {};
   
   const [createSurvey] = useMutation(CREATE_SURVEY);
   const [createQuestion] = useMutation(CREATE_QUESTION);
@@ -60,9 +60,77 @@ const useStyles = makeStyles((theme) => ({
     });
   };
 
+  const handleAddQuestion = () => {
+    if (surveyForm.questions.length < 10) {
+      setSurveyForm({
+        ...surveyForm,
+        questions: [...surveyForm.questions, {
+          question: '',
+          choices: [{
+            choice: '',
+          }],
+        }],
+      });
+    };
+  };
+
+  const handleAddChoice = (questionIndex) => {
+    if (surveyForm.questions[questionIndex].choices.length < 5) {
+      setSurveyForm({
+        ...surveyForm,
+        questions:[...surveyForm.questions.slice(0, questionIndex), {
+          question: surveyForm.questions[questionIndex].question,
+          choices: [...surveyForm.questions[questionIndex].choices, {
+            choice: '',
+          }],
+        }, ...surveyForm.questions.slice(questionIndex + 1)],
+      });
+    };
+  };
+
+  const handleRemoveQuestion = (questionIndex) => {
+    setSurveyForm({
+      ...surveyForm,
+      questions: [...surveyForm.questions.slice(0, questionIndex), ...surveyForm.questions.slice(questionIndex + 1)],
+    });
+  };
+
+  const handleRemoveChoice = (questionIndex, choiceIndex) => {
+    setSurveyForm({
+      ...surveyForm,
+      questions: [...surveyForm.questions.slice(0, questionIndex), {
+        question: surveyForm.questions[questionIndex].question,
+        choices: [...surveyForm.questions[questionIndex].choices.slice(0, choiceIndex), ...surveyForm.questions[questionIndex].choices.slice(choiceIndex + 1)],
+      }, ...surveyForm.questions.slice(questionIndex + 1)],
+    });
+  };  
+
+  const handleQuestChange = (event, questionIndex) => {
+    const { value } = event.target;
+    setSurveyForm({
+      ...surveyForm,
+      questions: [...surveyForm.questions.slice(0, questionIndex), {
+        question: value,
+        choices: surveyForm.questions[questionIndex].choices,
+      }, ...surveyForm.questions.slice(questionIndex + 1)],
+    });
+  };
+
+  const handleChoiceChange = ( event, questionIndex, choiceIndex) => {
+    const { value } = event.target;
+    setSurveyForm({
+      ...surveyForm,
+      questions: [...surveyForm.questions.slice(0, questionIndex), {
+        question: surveyForm.questions[questionIndex].question,
+        choices: [...surveyForm.questions[questionIndex].choices.slice(0, choiceIndex), {
+          choice: value,
+        }, ...surveyForm.questions[questionIndex].choices.slice(choiceIndex + 1)],
+      }, ...surveyForm.questions.slice(questionIndex + 1)],
+    });
+  }
+
   const handleFormSubmit = async (event) => {
-    // TO DO: when form is submitted, create a new survey in the database with all the input fields populate
-    event.preventDefault();
+    // event.preventDefault();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -80,13 +148,13 @@ const useStyles = makeStyles((theme) => ({
       });
       console.log(surData);
       setShowAlert(true);
-      } catch (error) {
-        throw new Error('something went wrong!');
+    } catch (error) {
+      throw new Error('something went wrong!');
     }
   };
 
   if (loading) {
-    return <h2>LOADING...</h2>;
+    return <h2>page loading...</h2>;
   }
 
   return (
@@ -154,7 +222,6 @@ const useStyles = makeStyles((theme) => ({
                               </FormControl.Feedback> */}
                             </FormGroup>
                             <br />
-                            < DynamicQuestion />
                           </Stack>
                           < SaveBtn />
                           < ShareableBtn />
