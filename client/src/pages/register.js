@@ -26,6 +26,7 @@ function Register(props) {
     const context = useContext(AuthContext);
     let navigate = useNavigate();
     const [errors, setErrors] = useState([]);
+    const [showPassword,setShow] = useState(false)
 
     function registerUserCallback() {
         console.log("Callback hit")
@@ -78,12 +79,14 @@ function Register(props) {
                         label="Password"
                         name="password"
                         onChange={onChange}
+                        type={showPassword?"text":"password"}
                         />
                         <TextField required focused
                         variant="filled"
                         label="Confirm Password"
                         name="confirmPassword"
                         onChange={onChange}
+                        type={showPassword?"text":"password"}
                         />   
                 </Stack>
         {errors.map(function(error){
