@@ -6,6 +6,7 @@ import { TextField, Button, Container, Stack, Alert } from '@mui/material';
 import { gql } from 'graphql-tag';
 import { useNavigate } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
+import LoginBtn from '../components/LoginBtn';
 
 
 const LOGIN_USER = gql`
@@ -52,30 +53,35 @@ function Login(props) {
     <>
       <Box style={{background: '#90a4ae'}} height="75vh" display="flex" flexDirection="column">
         <Box flex={1} overflow="auto">
-        <Container space={2} maxWidth="sm">
-            <h3>Login</h3>
-            <p>This is the login page, login below</p>
-            <Stack spacing={2} paddingBottom={2}>
-                    <TextField
-                    label="Email"
-                    name="email"
-                    onChange={onChange}
-                    />
-                    <TextField
-                    label="Password"
-                    name="password"
-                    onChange={onChange}
-                    />
-            </Stack>
-            {errors.map(function(error){
-                 return (
-                    <Alert severity="error">
-                      {error.message}
-                    </Alert>
+          <Container space={2} maxWidth="sm">
+            <Box container textAlign='center'>
+              <h1>Login</h1>
+            </Box>
+                <Stack direction='column' justifyContent='space-between' spacing={4} padding={4}>
+                        <TextField required focused
+                        variant="filled"
+                        label="Email"
+                        name="email"
+                        onChange={onChange}
+                        />
+                        <TextField required focused
+                        variant="filled"
+                        label="Password"
+                        name="password"
+                        onChange={onChange}
+                        />
+                </Stack>
+                {errors.map(function(error){
+                  return (
+                  <Alert severity="error">
+                    {error.message}
+                  </Alert>
                 )
-             })}
-            <Button variant="contained" onClick={onSubmit}>Login</Button>
-            </Container>
+              })}
+              <Box textAlign='center'>
+              <LoginBtn handleClick={onSubmit} variant='contained'/>
+              </Box>
+          </Container>
         </Box>
       </Box>
     </>

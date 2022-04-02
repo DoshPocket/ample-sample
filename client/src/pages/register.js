@@ -6,6 +6,7 @@ import { TextField, Button, Container, Stack, Alert } from '@mui/material';
 import Box from '@material-ui/core/Box';
 import { gql } from 'graphql-tag';
 import { useNavigate } from 'react-router-dom';
+import SignupBtn from '../components/SignupBtn';
 
 const REGISTER_USER = gql`
 mutation Mutation(
@@ -20,7 +21,6 @@ mutation Mutation(
     }
 }
 `
-
 
 function Register(props) {
     const context = useContext(AuthContext);
@@ -54,33 +54,38 @@ function Register(props) {
 
   return (
     <>
-      <Box style={{background: '#90a4ae'}} height="75vh" display="flex" flexDirection="column">
+      <Box style={{background: '#90a4ae'}} height="75vh"    display="flex" flexDirection="column">
         <Box flex={1} overflow="auto">
-        <Container space={2} maxWidth="sm">
-        <h3>Register</h3>
-        <p>This is the register page, register below to create an account</p>
-        <Stack spacing={2} paddingBottom={2}>
-            <TextField
-                label="Username"
-                name="username"
-                onChange={onChange}
-                />
-                <TextField
-                label="Email"
-                name="email"
-                onChange={onChange}
-                />
-                <TextField
-                label="Password"
-                name="password"
-                onChange={onChange}
-                />
-                <TextField
-                label="Confirm Password"
-                name="confirmPassword"
-                onChange={onChange}
-                />   
-        </Stack>
+            <Container space={2} maxWidth="sm">
+                <Box container textAlign='center'>
+                    <h1>Register</h1>
+                </Box>
+                <Stack spacing={2} paddingBottom={2}>
+                    <TextField required focused
+                        variant="filled"
+                        label="Username"
+                        name="username"
+                        onChange={onChange}
+                        />
+                        <TextField required focused
+                        variant="filled"
+                        label="Email"
+                        name="email"
+                        onChange={onChange}
+                        />
+                        <TextField required focused
+                        variant="filled"
+                        label="Password"
+                        name="password"
+                        onChange={onChange}
+                        />
+                        <TextField required focused
+                        variant="filled"
+                        label="Confirm Password"
+                        name="confirmPassword"
+                        onChange={onChange}
+                        />   
+                </Stack>
         {errors.map(function(error){
              return (
                 <Alert severity="error">
@@ -88,7 +93,9 @@ function Register(props) {
                 </Alert>
             )
          })}
-        <Button variant="contained" onClick={onSubmit}>Register</Button>
+              <Box textAlign='center'>
+              <SignupBtn handleClick={onSubmit} variant='contained'/>
+              </Box>
         </Container>
         </Box>
      </Box>

@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignupBtn() {
+export default function SignupBtn(props) {
     const classes = useStyles();
   
     return (
@@ -17,10 +17,10 @@ export default function SignupBtn() {
         <Button
           variant="contained"
           style={{background: "#002984", color: "#ffffff"}}
-          href="/register"
+          href={props.redirect}
           className={classes.button}
           startIcon={<SignupIcon />}
-          onClick={() => {window.location.href="/register" }}
+          onClick={props.handClick}
         >
         Signup
       </Button>
