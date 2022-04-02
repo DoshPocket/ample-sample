@@ -69,8 +69,6 @@ const theme = createTheme({
             :
             <>
             {/* <p>Please login or signup</p> */}
-            <AddBtn />
-            <RemoveBtn />
             </>
         }
         </>

@@ -2,14 +2,37 @@ import {useContext, useState} from 'react';
 import { AuthContext } from '../context/authContext';
 import { useForm } from '../utility/hooks';
 import { useMutation } from '@apollo/react-hooks';
-import { TextField, Container, Stack, Alert } from '@mui/material';
+import { TextField, Button, Container, Stack, Alert } from '@mui/material';
 import { gql } from 'graphql-tag';
 import { useNavigate } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
-import LoginBtn from '../components/LoginBtn';
-
-
-
+import LoginIcon from '@mui/icons-material/Login';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { makeStyles } from '@material-ui/core/styles';
+const theme = createTheme({
+  palette: {
+    background: {
+      box: '#58A5F0',
+      },
+    primary: {
+      light: '#4F5B62',
+      main: '#263238',
+      dark: '#000A12',
+      contrastText: '#FFFFFF',
+    },
+    secondary: {
+      light: '#757DE8',
+      main: '#3F51B5',
+      dark: '#002984',
+      contrastText: '#FFFFFF',
+    }
+  }
+});
+const useStyles = makeStyles((theme) => ({
+  button: {
+    margin: theme.spacing(1),
+  },
+}));
 const LOGIN_USER = gql`
 mutation login(
 $loginInput: LoginInput
@@ -23,24 +46,22 @@ $loginInput: LoginInput
     }
 }
 `
-
 function Login(props) {
+    const classes = useStyles();
     let navigate = useNavigate();
     const context = useContext(AuthContext);
     const [errors, setErrors] = useState([]);
     const [showPassword,setShow] = useState(false)
 
+
     function loginUserCallback() {
         console.log("Callback hit")
         loginUser();
     }
-
     const { onChange, onSubmit, values } = useForm(loginUserCallback, {
         email: '',
-        password: '',
-        showPassword: false
+        password: ''
     });
-
     const [ loginUser, { loading }] = useMutation(LOGIN_USER, {
         update(proxy, { data: { loginUser: userData }}) {
             context.login(userData);
@@ -51,45 +72,47 @@ function Login(props) {
         },
         variables: { loginInput: values }
       });
-
   return (
     <>
-      <Box style={{background: '#90a4ae'}} height="75vh" display="flex" flexDirection="column">
+    <ThemeProvider theme={theme}>
+      <Box style={{background: '#90A4AE'}} height="75vh" display="flex" flexDirection="column">
         <Box flex={1} overflow="auto">
-          <Container space={2} maxWidth="sm">
-            <Box container textAlign='center'>
-              <h1>Login</h1>
-            </Box>
-                <Stack direction='column' justifyContent='space-between' spacing={4} padding={4}>
-                        <TextField required focused
-                        variant="filled"
-                        label="Email"
-                        name="email"
-                        onChange={onChange}
-                        />
-                        <TextField required focused
-                        variant="filled"
-                        label="Password"
-                        name="password"
-                        onChange={onChange}
-                        type={showPassword?"text":"password"}
-                        />
-                </Stack>
-                {errors.map(function(error){
-                  return (
-                  <Alert severity="error">
-                    {error.message}
-                  </Alert>
+        <Container space={2} maxWidth="sm">
+            <h3>Login</h3>
+            <p>This is the login page, login below</p>
+            <Stack spacing={2} paddingBottom={2}>
+                    <TextField
+                    label="Email"
+                    name="email"
+                    onChange={onChange}
+                    />
+                    <TextField
+                    label="Password"
+                    name="password"
+                    onChange={onChange}
+                    type={showPassword?"text":"password"}
+                    />
+            </Stack>
+            {errors.map(function(error){
+                 return (
+                    <Alert severity="error">
+                      {error.message}
+                    </Alert>
                 )
-              })}
-              <Box textAlign='center'>
-              <LoginBtn handleClick={onSubmit} variant='contained'/>
-              </Box>
-          </Container>
+             })}
+            <Button
+            variant="contained"
+            className={classes.button}
+            style={{background: '#002984', color: '#FFFFFF'}}
+            onClick={onSubmit}
+            startIcon={<LoginIcon />}>
+              Login
+              </Button>
+            </Container>
         </Box>
       </Box>
+      </ThemeProvider>
     </>
   );
 };
-
 export default Login;

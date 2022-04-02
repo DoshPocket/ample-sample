@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { makeStyles } from '@material-ui/core/styles';
-import DynamicQuestion from '../components/GenerateForm';
+// import DynamicQuestion from '../components/GenerateForm';
 import SaveBtn from '../components/SaveBtn';
 import ShareableBtn from '../components/ShareableBtn';
 import { useMutation } from '@apollo/react-hooks';
