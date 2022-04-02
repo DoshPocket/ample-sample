@@ -15,6 +15,8 @@ import Box from '@material-ui/core/Box';
 // import ReactPlayer from "react-player";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import AddBtn from "../components/AddBtn";
+import RemoveBtn from "../components/RemoveBtn";
 
 
 
@@ -66,7 +68,9 @@ const theme = createTheme({
             </>
             :
             <>
-            <p>Please login or signup</p>
+            {/* <p>Please login or signup</p> */}
+            <AddBtn />
+            <RemoveBtn />
             </>
         }
         </>

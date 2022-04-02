@@ -4,15 +4,14 @@ import { useQuery } from '@apollo/react-hooks';
 import { makeStyles } from '@material-ui/core/styles';
 import DynamicQuestion from '../components/GenerateForm';
 import SaveBtn from '../components/SaveBtn';
-import { Form, Alert } from "react-bootstrap";
+// import { Form, Alert } from "react-bootstrap";
 import ShareableBtn from '../components/ShareableBtn';
 import { useMutation } from '@apollo/react-hooks';
 import { CREATE_SURVEY } from '../utility/mutations';
 import { CREATE_QUESTION } from '../utility/mutations';
 import { CREATE_CHOICE } from '../utility/mutations';
 import { GET_ME } from '../utility/queries';
-import { Grid, Box, Container, Stack } from '@mui/material';
-import TextField from '@material-ui/core/TextField';
+import { FormGroup, FormControl, FormLabel, TextField, InputLabel, Input, Grid, Box, Container, Stack } from '@mui/material';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -98,51 +97,65 @@ const useStyles = makeStyles((theme) => ({
                 <Grid item xs={12} mt={10} mb={10}>
                   <Container style={{background:'#ffffff', borderRadius:'10px'}}>
                     <Box height='60vh' display='flex' flexDirection='column'>
-                      <Box flex={1} overflow='auto'>
+                      <Box compnent='form' noValidate flex={1} overflow='auto'>
                         <Stack spacing={2} paddingBottom={2}>
-                          <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-                            <Alert
+                          <Stack validated={validated} onSubmit={handleFormSubmit}>
+                            {/* <Alert
                               dismissible
                               onClose={() => setShowAlert(false)}
                               show={showAlert}
                               variant='danger'
                               >
                             Something went wrong with survey generation!
-                            </Alert>
-                            <Form.Group>
-                              <Form.Label htmlFor='title'>What is the title of your survey?</Form.Label>
+                            </Alert> */}
+                            <FormGroup>
+                              {/* <InputLabel>What is the title of your survey?</InputLabel> */}
                               <br />
-                              <Form.Control
+                              <TextField
+                                helperText='What is the title of your survey?'
+                                required
+                                label='required'
+                                defaultValue='Survey Title'
+                                variant='filled'
+                                />
+                              {/* <FormControl
                                 name='title'
                                 placeholder='Title'
                                 type='input'
                                 onChange={handleInputChange}
                                 value={surveyForm.title}
                                 required
-                              />
-                              <Form.Control.Feedback type='invalid'>
+                              /> */}
+                              {/* <FormControl.Feedback type='invalid'>
                               A survey title is required.
-                              </Form.Control.Feedback>
-                            </Form.Group>
+                              </FormControl.Feedback> */}
+                            </FormGroup>
                             <br />
-                            <Form.Group>
-                              <Form.Label htmlFor='description'>What is your survey about?</Form.Label>
+                            <FormGroup>
+                              {/* <InputLabel>Write a brief description of your survey.</InputLabel> */}
                               <br />
-                              <Form.Control
+                              <TextField
+                                helperText='Write a brief description of your survey.'
+                                required
+                                label='required'
+                                defaultValue='Survey Description'
+                                variant='filled'
+                                />
+                              {/* <FormControl
                               name='description'
                               placeholder='Description'
                               type='text'
                               onChange={handleInputChange}
                               value={surveyForm.description}
                               required
-                            />
-                              <Form.Control.Feedback type='invalid'>
+                            /> */}
+                              {/* <FormControl.Feedback type='invalid'>
                               A brief survey description is required.
-                              </Form.Control.Feedback>
-                            </Form.Group>
+                              </FormControl.Feedback> */}
+                            </FormGroup>
                             <br />
                             < DynamicQuestion />
-                          </Form>
+                          </Stack>
                           < SaveBtn />
                           < ShareableBtn />
                         </Stack>

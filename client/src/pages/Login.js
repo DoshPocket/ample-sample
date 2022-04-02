@@ -2,11 +2,12 @@ import {useContext, useState} from 'react';
 import { AuthContext } from '../context/authContext';
 import { useForm } from '../utility/hooks';
 import { useMutation } from '@apollo/react-hooks';
-import { TextField, Button, Container, Stack, Alert } from '@mui/material';
+import { TextField, Container, Stack, Alert } from '@mui/material';
 import { gql } from 'graphql-tag';
 import { useNavigate } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import LoginBtn from '../components/LoginBtn';
+
 
 
 const LOGIN_USER = gql`
@@ -27,6 +28,7 @@ function Login(props) {
     let navigate = useNavigate();
     const context = useContext(AuthContext);
     const [errors, setErrors] = useState([]);
+    const [showPassword,setShow] = useState(false)
 
     function loginUserCallback() {
         console.log("Callback hit")
@@ -35,7 +37,8 @@ function Login(props) {
 
     const { onChange, onSubmit, values } = useForm(loginUserCallback, {
         email: '',
-        password: ''
+        password: '',
+        showPassword: false
     });
 
     const [ loginUser, { loading }] = useMutation(LOGIN_USER, {
@@ -69,6 +72,7 @@ function Login(props) {
                         label="Password"
                         name="password"
                         onChange={onChange}
+                        type={showPassword?"text":"password"}
                         />
                 </Stack>
                 {errors.map(function(error){
