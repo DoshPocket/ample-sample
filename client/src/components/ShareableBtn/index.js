@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ShareableBtn() {
+export default function ShareableBtn(props) {
     const classes = useStyles();
   
     return (
@@ -19,6 +19,7 @@ export default function ShareableBtn() {
           style={{background: "#002984", color: "#ffffff"}}
           className={classes.button}
           startIcon={<ShareableIcon />}
+          onClick={props.handleClick}
         >
         Share Survey Link
       </Button>
