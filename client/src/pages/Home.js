@@ -35,6 +35,7 @@ const theme = createTheme({
   export default function Home() {
     const { user, logout } = useContext(AuthContext);
     const classes = useStyles();
+    const saved = localStorage.getItem("username");
 
     return (
       <ThemeProvider theme={theme}>
@@ -43,19 +44,19 @@ const theme = createTheme({
         <Grid container direction='column' alignItems='center' spacing={0}>
           <Grid item xs={12}>
             <Box m={2} p={4}>
-                <img src="/Images/ample-sample-logo2.gif" alt='Ample Sample Animated Logo' width="500" height="500" />
-            </Box>
             <>
         {user ?
             <>
-            <h2>{user.email} is logged in</h2>
+            <h2>Welcome {saved}</h2>
             </>
             :
             <>
-            {/* <p>Please login or signup</p> */}
+            <p>Please login or signup</p>
             </>
         }
         </>
+                <img src="/Images/ample-sample-logo2.gif" alt='Ample Sample Animated Logo' width="500" height="500" />
+            </Box>
           </Grid>
         </Grid>
       </div>

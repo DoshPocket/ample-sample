@@ -1,3 +1,6 @@
+// THIS SCHEMA IS FOR GRAPHQL STUFF
+
+
 const { Schema } = require('mongoose');
 const questionSchema = require('./question');
 
