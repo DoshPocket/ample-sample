@@ -16,6 +16,7 @@ export default function AddBtn(props) {
       <div>
         <Button
           style={{background: "#002984", color: "#ffffff"}}
+          onClick={props.handleClick}
           variant="contained"
           className={classes.button}
           startIcon={<AddIcon />}

@@ -11,7 +11,7 @@ import { CREATE_SURVEY } from '../utility/mutations';
 import { CREATE_QUESTION } from '../utility/mutations';
 import { CREATE_CHOICE } from '../utility/mutations';
 import { GET_ME } from '../utility/queries';
-import { FormGroup, FormControl, FormLabel, TextField, InputLabel, Input, Grid, Box, Container, Stack } from '@mui/material';
+import { TextField, Grid, Container, Stack, Box, FormGroup, Button } from '@mui/material';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,14 +26,14 @@ export default function GenerateSurvey() {
   const [surveyTitle, setSurveyTitle] = useState('');
   const [surveyDescription, setSurveyDescription] = useState('');
   const [surveyQuestions, setSurveyQuestions] = useState([]);
-  const [surveyChoices] = useState([]);
+  const [surveyChoices, setSurveyChoices] = useState([]);
 
   const { loading, data } = useQuery(GET_ME);
   const userData = data?.me || {};
   
   const [createSurvey] = useMutation(CREATE_SURVEY);
-  const [createQuestion] = useMutation(CREATE_QUESTION);
-  const [createChoice] = useMutation(CREATE_CHOICE);
+  // const [createQuestion] = useMutation(CREATE_QUESTION);
+  // const [createChoice] = useMutation(CREATE_CHOICE);
     
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
@@ -48,12 +48,12 @@ export default function GenerateSurvey() {
     }],
   });
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setSurveyForm({
-      ...surveyForm,
-      [name]: value,
-    });
+  const handleSurveyTitleChange = (event) => {
+    setSurveyTitle(event.target.value);
+  };
+   
+  const handleSurveyDescChange = (event) => {
+    setSurveyDescription(event.target.value);
   };
 
   const handleAddQuestion = () => {
@@ -85,20 +85,24 @@ export default function GenerateSurvey() {
   };
 
   const handleRemoveQuestion = (questionIndex) => {
-    setSurveyForm({
-      ...surveyForm,
-      questions: [...surveyForm.questions.slice(0, questionIndex), ...surveyForm.questions.slice(questionIndex + 1)],
-    });
+    if (surveyForm.questions.length > 1) {
+      setSurveyForm({
+        ...surveyForm,
+        questions: [...surveyForm.questions.slice(0, questionIndex), ...surveyForm.questions.slice(questionIndex + 1)],
+      });
+    };
   };
 
   const handleRemoveChoice = (questionIndex, choiceIndex) => {
-    setSurveyForm({
-      ...surveyForm,
-      questions: [...surveyForm.questions.slice(0, questionIndex), {
-        question: surveyForm.questions[questionIndex].question,
-        choices: [...surveyForm.questions[questionIndex].choices.slice(0, choiceIndex), ...surveyForm.questions[questionIndex].choices.slice(choiceIndex + 1)],
-      }, ...surveyForm.questions.slice(questionIndex + 1)],
-    });
+    if (surveyForm.questions[questionIndex].choices.length > 1) {
+      setSurveyForm({
+        ...surveyForm,
+        questions: [...surveyForm.questions.slice(0, questionIndex), {
+          question: surveyForm.questions[questionIndex].question,
+          choices: [...surveyForm.questions[questionIndex].choices.slice(0, choiceIndex), ...surveyForm.questions[questionIndex].choices.slice(choiceIndex + 1)],
+        }, ...surveyForm.questions.slice(questionIndex + 1)],
+      });
+    };
   };  
 
   const handleQuestChange = (event, questionIndex) => {
@@ -154,6 +158,7 @@ export default function GenerateSurvey() {
   }
 
   return (
+    
         <div style={{background: '#90a4ae'}} className={classes.root}>
           <Container maxWidth='md'>
             <Stack spacing={2}>
@@ -164,82 +169,74 @@ export default function GenerateSurvey() {
                       <Box compnent='form' noValidate flex={1} overflow='auto'>
                         <Stack spacing={2} paddingBottom={2}>
                           <Stack onSubmit={handleFormSubmit}>
-                            {/* <Alert
-                              dismissible
-                              onClose={() => setShowAlert(false)}
-                              show={showAlert}
-                              variant='danger'
-                              >
-                            Something went wrong with survey generation!
-                            </Alert> */}
                             <FormGroup>
-                              {/* <InputLabel>What is the title of your survey?</InputLabel> */}
                               <br />
                               <TextField
                                 helperText='What is the title of your survey?'
                                 required
                                 label='required'
-                                defaultValue='Survey Title'
                                 variant='filled'
                                 />
-                              {/* <FormControl
-                                name='title'
-                                placeholder='Title'
-                                type='input'
-                                onChange={handleInputChange}
-                                value={surveyForm.title}
-                                required
-                              /> */}
-                              {/* <FormControl.Feedback type='invalid'>
-                              A survey title is required.
-                              </FormControl.Feedback> */}
                             </FormGroup>
                             <br />
                             <FormGroup>
-                              {/* <InputLabel>Write a brief description of your survey.</InputLabel> */}
                               <br />
                               <TextField
                                 helperText='Write a brief description of your survey.'
                                 required
                                 label='required'
-                                defaultValue='Survey Description'
                                 variant='filled'
                                 />
-                              {/* <FormControl
-                              name='description'
-                              placeholder='Description'
-                              type='text'
-                              onChange={handleInputChange}
-                              value={surveyForm.description}
-                              required
-                            /> */}
-                              {/* <FormControl.Feedback type='invalid'>
-                              A brief survey description is required.
-                              </FormControl.Feedback> */}
                             </FormGroup>
                             <br />
                             <br />
                             <br />
                             <Box>
-                              <FormGroup>
+                        <FormGroup>
+                          {surveyForm.questions.map((question, questionIndex) => (
+                          <Box key={questionIndex}>
+                            <TextField
+                              helperText='Write a question for your survey.'
+                              required
+                              label='required'
+                              variant='filled'
+                              value = {question.question}
+                              onChange={(event) => handleQuestChange(event, questionIndex)}
+                            />
+                          <Button
+                            variant='contained'
+                            color='primary'
+                            onClick={() => handleAddQuestion(questionIndex)}>Add</Button>
+                          <Button
+                            variant='contained'
+                            color='secondary'
+                            onClick={() => handleRemoveQuestion(questionIndex)}>Remove</Button>
+                          <br />
+                            {question.choices.map((choice, choiceIndex) => (
+                              <Box key={choiceIndex}>
                                 <TextField
-                                    helperText='Add a question.'
-                                    required
-                                    label='required'
-                                    defaultValue='New Question'
-                                    variant='filled'
-                                    /> <AddBtn onClick={handleAddQuestion} /> <RemoveBtn />
-                              </FormGroup>
-                              <FormGroup>
-                                <TextField
-                                    helperText='Add a New Choice.'
-                                    required
-                                    label='required'
-                                    defaultValue='New Choice'
-                                    variant='filled'
-                                />                                 
-                                  <AddBtn handleClick={handleAddChoice} /> <RemoveBtn />
-                              </FormGroup>
+                                  helperText='Write a choice for your survey.'
+                                  required
+                                  label='required'
+                                  variant='filled'
+                                  value = {choice.choice}
+                                  onChange={(event) => handleChoiceChange(event, questionIndex, choiceIndex)}
+                                />
+                                {/* <AddBtn onClick={handleAddChoice}></AddBtn> */}
+                                <Button
+                                  variant='contained'
+                                  color='primary'
+                                  onClick={() => handleAddChoice(questionIndex)}>Add</Button>
+                                <Button
+                                  variant='contained'
+                                  color='secondary'
+                                  onClick={() => handleRemoveChoice(questionIndex, choiceIndex)}>Remove</Button>
+                                {/* <DeleteBtn onClick={() => handleRemoveChoice(questionIndex, choiceIndex)}></DeleteBtn> */}
+                              </Box>
+                            ))}
+                          </Box>
+                        ))}
+                        </ FormGroup>
                             </Box>
                             <br />
                           </Stack>
