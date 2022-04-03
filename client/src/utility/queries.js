@@ -1,19 +1,27 @@
 import  gql  from 'graphql-tag';
 
-export const GET_ME = gql `
+export const GET_USER = gql `
   {
-    me {
+    user {
       _id
-      firstName
-      lastName
+      username
       email
       company
-      survey {
-        _id
-        title
-        description
+      savedSurveys {
+            _id
+            title
+            description
+            questions {
+                _id
+                question
+                choices {
+                    _id
+                    choice
+                }
+
+            }
+      }
     }
-  }
 }
 `;
 

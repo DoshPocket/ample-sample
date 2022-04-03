@@ -31,16 +31,15 @@ export const LOGIN_USER = gql`
 export const CREATE_SURVEY = gql`
   mutation createSurvey($title: String!, $description: String!, $input: savedQuestion!) {
     createSurvey(title: $title, description: $description, input: $input) {
-      _id
-      title
-      description
-      savedQuestion {
-        _id
-        question
-        savedChoice {
-          _id
+      _id,
+      title,
+      description,
+      questions {
+        _id,
+        question,
+        choices {
+          _id,
           choice
-          responseCount
         }
       }
     }
@@ -53,10 +52,10 @@ export const DELETE_SURVEY = gql`
       _id
       title
       description
-      savedQuestion {
+      questions {
         _id
         question
-        savedChoice {
+        choices {
           _id
           choice
           responseCount
@@ -66,41 +65,42 @@ export const DELETE_SURVEY = gql`
   }
 `;
 
-export const CREATE_QUESTION = gql`
-  mutation createQuestion($question: String!, $input: savedChoice) {
-    createQuestion(question: $question, input: $input) {
-      _id
-      question
-      savedChoice {
-        _id
-        choice
-        responseCount
-      }
-    }
-  }
-`;
+//questions and choices are created dynamically in the front end when you click to add question- the question and it's choices will be instantiated; The survey will be updated to add the question(s)
+// export const CREATE_QUESTION = gql`
+//   mutation createQuestion($question: String!, $input: savedChoice) {
+//     createQuestion(question: $question, input: $input) {
+//       _id
+//       question
+//       savedChoice {
+//         _id
+//         choice
+//         responseCount
+//       }
+//     }
+//   }
+// `;
 
-export const DELETE_QUESTION = gql`
-  mutation deleteQuestion($_id: ID!) {
-  deleteQuestion(id: $id) {
-      _id
-      survey_id
-      question
-      savedChoice {
-        _id
-        choice
-        responseCount
-      }
-    }
-  }
-`;
+// export const DELETE_QUESTION = gql`
+//   mutation deleteQuestion($_id: ID!) {
+//   deleteQuestion(id: $id) {
+//       _id
+//       survey_id
+//       question
+//       savedChoice {
+//         _id
+//         choice
+//         responseCount
+//       }
+//     }
+//   }
+// `;
 
-export const CREATE_CHOICE = gql`
-  mutation createChoice($choice: String!) {
-    createChoice(choice: $choice) {
-      _id
-      choice
-      responseCount
-    }
-  }
-`;
+// export const CREATE_CHOICE = gql`
+//   mutation createChoice($choice: String!) {
+//     createChoice(choice: $choice) {
+//       _id
+//       choice
+//       responseCount
+//     }
+//   }
+// `;
