@@ -1,5 +1,5 @@
 const { model, Schema } = require("mongoose");
-const surveySchema = require('./survey');
+// const surveySchema = require('./survey');
 
 const userSchema = new Schema({
   username: { 
@@ -21,7 +21,7 @@ const userSchema = new Schema({
   company: {
     type: String,
   },
-  savedSurveys: [surveySchema],
+  // savedSurveys: [surveySchema],
   token: { 
     type: String 
   }

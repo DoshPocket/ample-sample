@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
             res.json(data);
         })
         .catch((error) => {
-            console.log('error: ', daerrorta);
+            console.log('error: ', error);
         });
 });
 
@@ -34,7 +34,6 @@ router.post('/save', (req, res) => {
         });
     });
 });
-
 
 router.get('/name', (req, res) => {
     const data =  {
