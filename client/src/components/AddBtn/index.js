@@ -20,6 +20,7 @@ export default function AddBtn(props) {
           variant="contained"
           className={classes.button}
           startIcon={<AddIcon />}
+          onClick={props.handleClick}
         >
       </Button>
       </div>  

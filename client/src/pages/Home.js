@@ -2,33 +2,17 @@ import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import { useContext } from 'react';
 import { AuthContext } from '../context/authContext';
-// import Nav from '../components/Nav';
-// import DeleteBtn from '../components/DeleteBtn';
-// import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-// import SubmitBtn from "../components/SubmitBtn";
-// import Profile from "./Profile";
-// import SignupBtn from "../components/SignupBtn";
-// import ProfileBtn from "../components/ProfileBtn";
-// import ShareableBtn from "../components/ShareableBtn";
-// import ReactPlayer from "react-player";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import AddBtn from "../components/AddBtn";
-import RemoveBtn from "../components/RemoveBtn";
 
 
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-  },
-  // paper: {
-  //   padding: theme.spacing(2),
-  //   textAlign: 'center',
-  //   color: theme.palette.text.secondary,
-  // },
+  }
 }));
 
 const theme = createTheme({
@@ -69,8 +53,6 @@ const theme = createTheme({
             :
             <>
             {/* <p>Please login or signup</p> */}
-            <AddBtn />
-            <RemoveBtn />
             </>
         }
         </>
@@ -80,6 +62,3 @@ const theme = createTheme({
       </ThemeProvider>
     );
   }
-
-  // Green #c8e6c9
-// Grey #90a4ae

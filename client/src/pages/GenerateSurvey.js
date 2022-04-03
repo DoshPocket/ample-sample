@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import SaveBtn from '../components/SaveBtn';
 import ShareableBtn from '../components/ShareableBtn';
 import AddBtn from '../components/AddBtn';
-import DeleteBtn from '../components/DeleteBtn';
+import RemoveBtn from '../components/RemoveBtn';
 import { useMutation } from '@apollo/react-hooks';
 import { CREATE_SURVEY } from '../utility/mutations';
 import { CREATE_QUESTION } from '../utility/mutations';
@@ -16,12 +16,7 @@ import { TextField, Grid, Container, Stack, Box, FormGroup, Button } from '@mui/
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-  },
-  // paper: {
-  //   padding: theme.spacing(2),
-  //   textAlign: 'center',
-  //   color: theme.palette.text.secondary,
-  // },
+  }
 }));
   
 export default function GenerateSurvey() {
@@ -163,38 +158,40 @@ export default function GenerateSurvey() {
   }
 
   return (
-    <div style={{background: '#90a4ae'}} className={classes.root}>
-      <Container maxWidth='md'>
-        <Stack spacing={2}>
-          <Grid container rowSpacing={10} columnSpacing={{ xs: 1, sm: 2, md: 3 }} alignItems='stretch'>
-            <Grid item xs={12} mt={10} mb={10}>
-              <Container style={{background:'#ffffff', borderRadius:'10px'}}>
-                <Box height='60vh' display='flex' flexDirection='column'>
-                  <Box component='form' noValidate flex={1} overflow='auto'>
-                    <Stack spacing={2} paddingBottom={2}>
-                      <Stack onSubmit={handleFormSubmit}>
-                        <FormGroup>
-                          <TextField
-                            helperText='What is the title of your survey?'
-                            required
-                            label='required'
-                            variant='filled'
-                            value ={surveyTitle}
-                            onChange={handleSurveyTitleChange}
-                          />
-                        </FormGroup>
-                        <br />
-                        <FormGroup>
-                          <TextField
-                            helperText='Write a brief description of your survey.'
-                            required
-                            label='required'
-                            variant='filled'
-                            value = {surveyDescription}
-                            onChange={handleSurveyDescChange}
-                          />
-                        </FormGroup>
-                        <br />
+    
+        <div style={{background: '#90a4ae'}} className={classes.root}>
+          <Container maxWidth='md'>
+            <Stack spacing={2}>
+              <Grid container rowSpacing={10} columnSpacing={{ xs: 1, sm: 2, md: 3 }} alignItems='stretch'>
+                <Grid item xs={12} mt={10} mb={10}>
+                  <Container style={{background:'#ffffff', borderRadius:'10px'}}>
+                    <Box height='60vh' display='flex' flexDirection='column'>
+                      <Box compnent='form' noValidate flex={1} overflow='auto'>
+                        <Stack spacing={2} paddingBottom={2}>
+                          <Stack onSubmit={handleFormSubmit}>
+                            <FormGroup>
+                              <br />
+                              <TextField
+                                helperText='What is the title of your survey?'
+                                required
+                                label='required'
+                                variant='filled'
+                                />
+                            </FormGroup>
+                            <br />
+                            <FormGroup>
+                              <br />
+                              <TextField
+                                helperText='Write a brief description of your survey.'
+                                required
+                                label='required'
+                                variant='filled'
+                                />
+                            </FormGroup>
+                            <br />
+                            <br />
+                            <br />
+                            <Box>
                         <FormGroup>
                           {surveyForm.questions.map((question, questionIndex) => (
                           <Box key={questionIndex}>
@@ -206,7 +203,7 @@ export default function GenerateSurvey() {
                               value = {question.question}
                               onChange={(event) => handleQuestChange(event, questionIndex)}
                             />
-                          <Button 
+                          <Button
                             variant='contained'
                             color='primary'
                             onClick={() => handleAddQuestion(questionIndex)}>Add</Button>
@@ -240,17 +237,19 @@ export default function GenerateSurvey() {
                           </Box>
                         ))}
                         </ FormGroup>
-                        <SaveBtn />
-                        <ShareableBtn />
-                      </Stack>
-                    </Stack>
-                  </Box>
-                </Box>
-              </Container>
-            </Grid>
-          </Grid>
-        </Stack>
-      </Container>
-    </div>
-  );
-};
+                            </Box>
+                            <br />
+                          </Stack>
+                          < SaveBtn />
+                          < ShareableBtn />
+                        </Stack>
+                      </Box>
+                    </Box>
+                  </Container>
+                </Grid>
+              </Grid>
+            </Stack>
+          </Container>
+        </div>
+      );
+}

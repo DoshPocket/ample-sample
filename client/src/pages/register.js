@@ -3,10 +3,18 @@ import { AuthContext } from '../context/authContext';
 import { useForm } from '../utility/hooks';
 import { useMutation } from '@apollo/react-hooks';
 import { TextField, Button, Container, Stack, Alert } from '@mui/material';
+import { makeStyles } from '@material-ui/core/styles';
+import SignupIcon from '@mui/icons-material/PostAdd';
 import Box from '@material-ui/core/Box';
 import { gql } from 'graphql-tag';
 import { useNavigate } from 'react-router-dom';
-import SignupBtn from '../components/SignupBtn';
+
+
+const useStyles = makeStyles((theme) => ({
+    button: {
+      margin: theme.spacing(1),
+    },
+  }));
 
 const REGISTER_USER = gql`
 mutation Mutation(
@@ -27,6 +35,7 @@ function Register(props) {
     let navigate = useNavigate();
     const [errors, setErrors] = useState([]);
     const [showPassword,setShow] = useState(false)
+    const classes = useStyles();
 
     function registerUserCallback() {
         console.log("Callback hit")
@@ -52,6 +61,7 @@ function Register(props) {
         },
         variables: { registerInput: values }
     });
+
 
   return (
     <>
@@ -97,7 +107,15 @@ function Register(props) {
             )
          })}
               <Box textAlign='center'>
-              <SignupBtn handleClick={onSubmit} variant='contained'/>
+                <Button
+                    variant="contained"
+                    style={{background: "#002984", color: "#ffffff"}}
+                    className={classes.button}
+                    startIcon={<SignupIcon />}
+                    onClick={onSubmit}
+                    >
+                    Signup
+                </Button>
               </Box>
         </Container>
         </Box>
