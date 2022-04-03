@@ -12,7 +12,7 @@ import GenerateSurvey from './pages/GenerateSurvey';
 import Analytics from './pages/Analytics';
 import FillSurvey from './pages/FillSurvey';
 import CssBaseline from '@mui/material/CssBaseline';
-
+import './App.css';
 
 import Nav from './components/Nav';
 import Footer from './components/Footer';
@@ -23,8 +23,12 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+const font = 'Mukta, sans-serif';
 
 const theme = createTheme({
+  typography: {
+    fontFamily: font,
+  },
   palette: {
     primary: {
       light: '#58a5f0',
@@ -38,6 +42,7 @@ const theme = createTheme({
       dark: '#808e95',
       contrastText: '#000000',
     }
+    
   }
 });
 

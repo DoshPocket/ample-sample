@@ -8,7 +8,6 @@ import SignupIcon from '@mui/icons-material/PostAdd';
 import Box from '@material-ui/core/Box';
 import { gql } from 'graphql-tag';
 import { useNavigate } from 'react-router-dom';
-import SignupBtn from '../components/SignupBtn';
 
 
 const useStyles = makeStyles((theme) => ({
