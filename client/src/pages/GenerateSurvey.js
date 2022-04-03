@@ -194,7 +194,7 @@ export default function GenerateSurvey() {
                             <Box>
                         <FormGroup>
                           {surveyForm.questions.map((question, questionIndex) => (
-                          <Box key={questionIndex}>
+                          <FormGroup key={questionIndex}>
                             <TextField
                               helperText='Write a question for your survey.'
                               required
@@ -213,7 +213,7 @@ export default function GenerateSurvey() {
                             onClick={() => handleRemoveQuestion(questionIndex)}>Remove</Button>
                           <br />
                             {question.choices.map((choice, choiceIndex) => (
-                              <Box key={choiceIndex}>
+                              <FormGroup key={choiceIndex}>
                                 <TextField
                                   helperText='Write a choice for your survey.'
                                   required
@@ -223,18 +223,21 @@ export default function GenerateSurvey() {
                                   onChange={(event) => handleChoiceChange(event, questionIndex, choiceIndex)}
                                 />
                                 {/* <AddBtn onClick={handleAddChoice}></AddBtn> */}
-                                <Button
+                                <Box>
+                                <Button 
                                   variant='contained'
                                   color='primary'
                                   onClick={() => handleAddChoice(questionIndex)}>Add</Button>
+
                                 <Button
                                   variant='contained'
                                   color='secondary'
                                   onClick={() => handleRemoveChoice(questionIndex, choiceIndex)}>Remove</Button>
+                                </Box>
                                 {/* <DeleteBtn onClick={() => handleRemoveChoice(questionIndex, choiceIndex)}></DeleteBtn> */}
-                              </Box>
+                              </FormGroup>
                             ))}
-                          </Box>
+                          </FormGroup>
                         ))}
                         </ FormGroup>
                             </Box>

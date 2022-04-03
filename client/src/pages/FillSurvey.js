@@ -1,8 +1,8 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
+import { useState} from 'react'
+import {Box, Container, Grid} from '@material-ui/core';
+import ShareableBtn from '../components/ShareableBtn';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,6 +13,15 @@ const useStyles = makeStyles((theme) => ({
   export default function FillSurvey() {
     const classes = useStyles();
 
+    const [copySuccess, setCopySuccess] = useState("")
+    // const textAreaRef = useRef(null)
+
+    async function copyToClip() {
+        await navigator.clipboard.writeText(window.location.href);
+        setCopySuccess("Copied");
+        alert('Your Survey Link Copied to Clipboard!')
+    }
+
     return (
       <div style={{background: '#90a4ae'}} className={classes.root}>
         <Grid container spacing={2} alignItems="stretch">
@@ -21,6 +30,8 @@ const useStyles = makeStyles((theme) => ({
               <Grid container alignItems='center'>
                 <Box height="75vh" display="flex" flexDirection="column">
                   <Box flex={1} overflow="auto">
+                  <ShareableBtn handleClick={copyToClip} 
+                  />
                     {/* FILL ME WITH A SURVEY TO FILL OUT!!! */}
                   </Box>
                 </Box>
