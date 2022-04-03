@@ -2,9 +2,10 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { makeStyles } from '@material-ui/core/styles';
-// import DynamicQuestion from '../components/GenerateForm';
 import SaveBtn from '../components/SaveBtn';
 import ShareableBtn from '../components/ShareableBtn';
+import AddBtn from '../components/AddBtn';
+import RemoveBtn from '../components/RemoveBtn';
 import { useMutation } from '@apollo/react-hooks';
 import { CREATE_SURVEY } from '../utility/mutations';
 import { CREATE_QUESTION } from '../utility/mutations';
@@ -15,12 +16,7 @@ import { FormGroup, FormControl, FormLabel, TextField, InputLabel, Input, Grid, 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-  },
-  // paper: {
-  //   padding: theme.spacing(2),
-  //   textAlign: 'center',
-  //   color: theme.palette.text.secondary,
-  // },
+  }
 }));
   
 export default function GenerateSurvey() {
@@ -167,7 +163,7 @@ export default function GenerateSurvey() {
                     <Box height='60vh' display='flex' flexDirection='column'>
                       <Box compnent='form' noValidate flex={1} overflow='auto'>
                         <Stack spacing={2} paddingBottom={2}>
-                          <Stack validated={validated} onSubmit={handleFormSubmit}>
+                          <Stack onSubmit={handleFormSubmit}>
                             {/* <Alert
                               dismissible
                               onClose={() => setShowAlert(false)}
@@ -221,6 +217,30 @@ export default function GenerateSurvey() {
                               A brief survey description is required.
                               </FormControl.Feedback> */}
                             </FormGroup>
+                            <br />
+                            <br />
+                            <br />
+                            <Box>
+                              <FormGroup>
+                                <TextField
+                                    helperText='Add a question.'
+                                    required
+                                    label='required'
+                                    defaultValue='New Question'
+                                    variant='filled'
+                                    /> <AddBtn onClick={handleAddQuestion} /> <RemoveBtn />
+                              </FormGroup>
+                              <FormGroup>
+                                <TextField
+                                    helperText='Add a New Choice.'
+                                    required
+                                    label='required'
+                                    defaultValue='New Choice'
+                                    variant='filled'
+                                />                                 
+                                  <AddBtn handleClick={handleAddChoice} /> <RemoveBtn />
+                              </FormGroup>
+                            </Box>
                             <br />
                           </Stack>
                           < SaveBtn />
