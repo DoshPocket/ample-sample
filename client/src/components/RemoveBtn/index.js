@@ -9,13 +9,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function RemoveBtn() {
+export default function RemoveBtn(props) {
     const classes = useStyles();
   
     return (
       <div>
         <Button
           variant="contained"
+          onClick={props.handleClick}
           color="secondary"
           className={classes.button}
           startIcon={<RemoveIcon />}

@@ -9,13 +9,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AddBtn() {
+export default function AddBtn(props) {
     const classes = useStyles();
   
     return (
       <div>
         <Button
           style={{background: "#002984", color: "#ffffff"}}
+          onClick={props.handleClick}
           variant="contained"
           className={classes.button}
           startIcon={<AddIcon />}
