@@ -14,7 +14,7 @@ const userSeed = require('./userData.json');
 
 db.once('open', async () => {
     try {
-      await User.deleteMany({});
+      // await User.deleteMany({});
       await User.create(userSeed);
       console.log('Coordinators seeded!');
  

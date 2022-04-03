@@ -9,9 +9,9 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 // const { AuthContext } = require('../../../client/src/context/authContext');
 
-module.exports = {
+const userResolvers = {
     Query: {
-        user: (_, {ID}) => User.findById(ID)
+        user: (_, {ID}) => User.findById(ID),
     },
     Mutation: {
         async registerUser(_, {registerInput: {username, email, password} }) {
@@ -82,3 +82,5 @@ module.exports = {
         },
     }
 };
+
+module.exports = userResolvers;

@@ -1,6 +1,6 @@
 const { gql } = require('apollo-server');
 
-module.exports = gql`
+const typeDefs = gql`
 type User {
     username: String,
     email: String,
@@ -26,7 +26,6 @@ type Survey {
     _id: ID
     title: String
     description: String
-    number_of_questions: Int
     questions: [Question]
 }
 
@@ -34,7 +33,6 @@ input savedSurveys {
     _id: ID
     title: String
     description: String
-    number_of_questions: Int
     questions: [savedQuestion]
 }
 
@@ -69,10 +67,12 @@ type Query {
 type Mutation {
     registerUser(registerInput: RegisterInput): User
     loginUser(loginInput: LoginInput): User
-    createSurvey(title: String!, description: String!, input: savedQuestion!): User
-    createQuestion(question: String!, input: savedChoice!): Survey
-    createChoice(choice: String!, responseCount: Int): Question
+    createSurvey(title: String!, description: String!, input: savedQuestion!): Survey
+    # createQuestion(question: String!, input: savedChoice!): Survey
+    # createChoice(choice: String!, responseCount: Int): Question
     deleteSurvey(_id: ID!): User
     deleteQuestion(_id: ID!): Survey
 }
 `;
+
+module.exports = typeDefs;

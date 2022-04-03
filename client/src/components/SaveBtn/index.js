@@ -16,6 +16,7 @@ export default function SaveBtn() {
       <div>
         <Button
           variant="contained"
+          type="submit"
           style={{background: "#002984", color: "#ffffff"}}
           className={classes.button}
           startIcon={<SaveIcon />}
