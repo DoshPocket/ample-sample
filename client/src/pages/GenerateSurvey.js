@@ -17,10 +17,11 @@ class GenerateSurvey extends React.Component {
   };
 
   componentDidMount = () => {
-    this.getBlogPost();
+    this.getSurvey();
   };
 
-  getBlogPost = () => {
+  getSurvey = () => {
+
     axios.get('/api')
       .then((response) => {
         const data = response.data;
@@ -56,7 +57,7 @@ class GenerateSurvey extends React.Component {
       .then(() => {
         console.log('Data has been sent to the server');
         this.resetUserInputs();
-        this.getBlogPost();
+        this.getSurvey();
       })
       .catch(() => {
         console.log('Internal server error');
@@ -71,13 +72,13 @@ class GenerateSurvey extends React.Component {
     });
   };
 
-  displayBlogPost = (posts) => {
+  displaySurvey = (posts) => {
 
     if (!posts.length) return null;
 
 
     return posts.map((post, index) => (
-      <div key={index} className="blog-post__display">
+      <div key={index} className="displaySurveys">
         <h3>{post.title}</h3>
         <p>{post.description}</p>
         <p>{post.questions}</p>
