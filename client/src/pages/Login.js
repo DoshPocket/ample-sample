@@ -2,7 +2,7 @@ import {useContext, useState} from 'react';
 import { AuthContext } from '../context/authContext';
 import { useForm } from '../utility/hooks';
 import { useMutation } from '@apollo/react-hooks';
-import { TextField, Button, Container, Stack, Alert } from '@mui/material';
+import { TextField, Button, Container, Stack, Alert, Grid } from '@mui/material';
 import { gql } from 'graphql-tag';
 import { useNavigate } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
@@ -75,42 +75,56 @@ function Login(props) {
   return (
     <>
     <ThemeProvider theme={theme}>
-      <Box style={{background: '#90A4AE'}} height="75vh" display="flex" flexDirection="column">
-        <Box flex={1} overflow="auto">
-        <Container space={2} maxWidth="sm">
-            <h3>Login</h3>
-            <p>This is the login page, login below</p>
-            <Stack spacing={2} paddingBottom={2}>
-                    <TextField
-                    label="Email"
-                    name="email"
-                    onChange={onChange}
-                    />
-                    <TextField
-                    label="Password"
-                    name="password"
-                    onChange={onChange}
-                    type={showPassword?"text":"password"}
-                    />
+      <div style={{background: '#90a4ae', flexGrow: 1}}>
+        <Container maxWidth='md'>
+          <Stack spacing={2}>
+            <Grid container rowSpacing={10} columnSpacing={{ xs: 1, sm: 2, md: 3 }} alignItems='stretch'>
+              <Grid item xs={12} mt={20} mb={20}>
+                <Container style={{background:'#ffffff', borderRadius:'10px', maxWidth:'500px'}}>
+                  <Box height='45vh' display='flex' flex={1} flexDirection='column' overflow='auto' spacing={2} paddingBottom={2} textAlign='center'>
+                  {/* <Box style={{background: '#90A4AE'}} height="75vh" display="flex" flexDirection="column">
+                    <Box flex={1} overflow="auto">
+                    <Container space={2} maxWidth="sm"> */}
+                    <Box marginTop={4} marginBottom={2}>
+                      <h1 style={{color: '#2F4B8A'}}>Login</h1>
+                      <p style={{color: '#2F4B8A'}}>Please login below to access your saved surveys</p>
+                    </Box>
+                    <Stack spacing={2} paddingBottom={2}>
+                      <TextField
+                        label="Email"
+                        name="email"
+                        onChange={onChange}
+                      />
+                      <TextField
+                        label="Password"
+                        name="password"
+                        onChange={onChange}
+                        type={showPassword?"text":"password"}
+                      />
+                    </Stack>
+                    {errors.map(function(error){
+                      return (
+                        <Alert severity="error">
+                          {error.message}
+                        </Alert>
+                      )
+                    })}
+                    <br />
+                      <Button
+                        variant="contained"
+                        className={classes.button}
+                        style={{background: '#002984', color: '#FFFFFF'}}
+                        onClick={onSubmit}
+                        startIcon={<LoginIcon />}>
+                        Login
+                      </Button>
+                    </Box>
+                  </Container>
+                </Grid>
+              </Grid>
             </Stack>
-            {errors.map(function(error){
-                 return (
-                    <Alert severity="error">
-                      {error.message}
-                    </Alert>
-                )
-             })}
-            <Button
-            variant="contained"
-            className={classes.button}
-            style={{background: '#002984', color: '#FFFFFF'}}
-            onClick={onSubmit}
-            startIcon={<LoginIcon />}>
-              Login
-              </Button>
-            </Container>
-        </Box>
-      </Box>
+          </Container>
+        </div>
       </ThemeProvider>
     </>
   );
