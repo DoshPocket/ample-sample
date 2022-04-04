@@ -55,7 +55,7 @@ const theme = createTheme({
             </>
         }
         </>
-                <img src="/Images/ample-sample-logo2.gif" alt='Ample Sample Animated Logo' width="500" height="500" />
+                <img src="./images/ample-sample-logo2.gif" alt='Ample Sample Animated Logo' width="500" height="500" />
             </Box>
           </Grid>
         </Grid>
