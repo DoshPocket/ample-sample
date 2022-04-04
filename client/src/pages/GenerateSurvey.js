@@ -92,7 +92,7 @@ class GenerateSurvey extends React.Component {
 
     //JSX
     return(
-      <div style={{background: '#90a4ae'}}>
+      <div style={{background: '#90a4ae', flexGrow: 1}}>
         <Container maxWidth='md'>
           <Stack spacing={2}>
             <Grid container rowSpacing={10} columnSpacing={{ xs: 1, sm: 2, md: 3 }} alignItems='stretch'>
@@ -100,8 +100,8 @@ class GenerateSurvey extends React.Component {
                 <Container style={{background:'#ffffff', borderRadius:'10px'}}>
                   <Box height='60vh' display='flex' flex={1} flexDirection='column' overflow='auto' spacing={2} paddingBottom={2}>
                     <form noValidate autoComplete='off' onSubmit={this.submit}>
-                      <h1>Generate Your Survey</h1>
-                        <p>Complete the form below and click save to have a survey generated and added to your profile.<br /> To keep your survey data concise, there is a limit of ten questions and four choices per question.</p>
+                      <h1 style={{color: '#2F4B8A'}}>Generate Your Survey</h1>
+                        <p style={{color: '#2F4B8A'}}>Complete the form below and click save to have a survey generated and added to your profile.<br /> To keep your survey data concise, there is a limit of ten questions and four choices per question.</p>
                         <br />
                         <TextField
                           helperText='What is the title of your survey?'
