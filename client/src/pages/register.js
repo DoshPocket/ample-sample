@@ -68,7 +68,7 @@ function Register(props) {
     <div style={{background: '#90a4ae', flexGrow: 1}}>
         <Container maxWidth='md'>
           <Stack spacing={2}>
-            <Grid container rowSpacing={10} columnSpacing={{ xs: 1, sm: 2, md: 3 }} alignItems='stretch'>
+            <Grid rowSpacing={10} columnSpacing={{ xs: 1, sm: 2, md: 3 }} alignItems='stretch'>
               <Grid item xs={12} mt={10} mb={10}>
                 <Container style={{background:'#ffffff', borderRadius:'10px', maxWidth:'500px'}}>
                   <Box height='60vh' display='flex' flex={1} flexDirection='column' overflow='auto' spacing={2} paddingBottom={2} textAlign='center'>

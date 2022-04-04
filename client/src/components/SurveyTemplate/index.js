@@ -1,14 +1,19 @@
 import React from 'react';
 import axios from 'axios';
+import { makeStyles } from '@material-ui/core/styles';
+import {Box, Container, Grid, Stack, FormControl, FormControlLabel, FormLabel, RadioGroup, Radio} from '@mui/material';
 
 
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     flexGrow: 1,
+//   }
+// }));
 
 class SurveyTemplate extends React.Component {
 state = {
   posts: []
 };
-
-
 
 componentDidMount = () => {
   this.getSurvey();
@@ -25,26 +30,67 @@ getSurvey = () => {
       alert('Error retrieving data!!!');
     });
 }
+
+
 displaySurvey = (posts) => {
+
+
 
   if (!posts.length) return null;
 
-
   return posts.map((post, index) => (
-    <div key={index} className="displaySurveys">
-      <h3>Title: {post.title}</h3>
-      <p>Description: {post.description}</p>
-      <p>Question: {post.questions}</p>
-      <p>Choice: {post.choiceA}</p>
-      <p>Choice: {post.choiceB}</p>
-      <p>Choice: {post.choiceC}</p>
-      <p>Choice: {post.choiceD}</p>
+    <div style={{background: '#90a4ae', flexGow: 1}}>
+    <Container maxWidth='md'>
+      <Stack spacing={2}>
+        <Grid container rowSpacing={10} columnSpacing={{ xs: 1, sm: 2, md: 3 }} alignItems='stretch'>
+          <Grid item xs={12} mt={10} mb={10}>
+            <Container style={{background:'#ffffff', borderRadius:'10px'}}>
+              <Box height='60vh' display='flex' flex={1} flexDirection='column' overflow='auto' spacing={2} paddingBottom={2}>
+                <Box textAlign='center' margin='auto'>
+                  <Box style={{color: '#2F4B8A'}}>
+                    <h3>Title: {post.title}</h3>
+                    <h5>Description: {post.description}</h5>
+                  </Box>
+                  <FormControl style={{color: '#2F4B8A'}} key={index} className="displaySurveys">
+                        <h6>Question: {post.questions} </h6>
+                      <RadioGroup
+                          aria-labelledby="demo-radio-buttons-group-label"
+                          defaultValue="female"
+                          name="radio-buttons-group"
+                      >
+                        <FormControlLabel value={post.choiceA} control={<Radio />} label={post.choiceA} />
+                        <FormControlLabel value={post.choiceB} control={<Radio />} label={post.choiceB} />
+                        <FormControlLabel value={post.choiceC} control={<Radio />} label={post.choiceC} />
+                        <FormControlLabel value={post.choiceD} control={<Radio />} label={post.choiceD} />
+                      </RadioGroup>
+                    </FormControl>  
+                  </Box>
+                </Box>
+              </Container>
+            </Grid>
+          </Grid>
+        </Stack>
+      </Container>
     </div>
   ));
 };
 
+// return posts.map((post, index) => (
+//   <div key={index} className="displaySurveys">
+//     <h3>Title: {post.title}</h3>
+//     <p>Description: {post.description}</p>
+//     <p>Question: {post.questions}</p>
+//     <p>Choice: {post.choiceA}</p>
+//     <p>Choice: {post.choiceB}</p>
+//     <p>Choice: {post.choiceC}</p>
+//     <p>Choice: {post.choiceD}</p>
+//   </div>
+// ));
+// };
+
 
 render() {
+
 
   console.log(this.state);
   //JSX
