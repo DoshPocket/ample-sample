@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../../context/authContext';
-// import Auth from '../../utility/auth';
 
 export default function LogoutBtn() {
   const { user, logout } = useContext(AuthContext);

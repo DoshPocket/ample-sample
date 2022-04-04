@@ -40,13 +40,13 @@ const theme = createTheme({
                     <Grid  container direction='column' alignItems='center' spacing={2} >
                         <Grid item>
                             <Grid container alignItems='center'>
-                                <h4>An Amplified Inc. Application</h4>
+                                <h4>An Amplified Inc. Application ©</h4>
                             </Grid>
                         </Grid>
                     </Grid>
                 </Container>
             </Box>
         </ThemeProvider>
-        </Typography>
+      </Typography>
     );
   }

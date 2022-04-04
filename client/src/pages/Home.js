@@ -47,11 +47,11 @@ const theme = createTheme({
             <>
         {user ?
             <>
-            <h2>Welcome {saved}</h2>
+            <h2 style={{color: '#2F4B8A'}}>Welcome to Ample Sample, {saved}!</h2>
             </>
             :
             <>
-            <p>Please login or signup</p>
+            <h2 style={{color: '#2F4B8A'}}>Please Login or Signup</h2>
             </>
         }
         </>

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import SaveBtn from '../components/SaveBtn';
+// import SaveBtn from '../components/SaveBtn';
 import ShareableBtn from '../components/ShareableBtn';
-import AddBtn from '../components/AddBtn';
-import RemoveBtn from '../components/RemoveBtn';
-import { TextField, Grid, Container, Stack, Box, Button } from '@mui/material';
+// import AddBtn from '../components/AddBtn';
+// import RemoveBtn from '../components/RemoveBtn';
+import { TextField, Grid, Container, Stack, Box } from '@mui/material';
 import axios from 'axios';
 
 class GenerateSurvey extends React.Component {

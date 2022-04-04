@@ -72,9 +72,6 @@ function Register(props) {
               <Grid item xs={12} mt={10} mb={10}>
                 <Container style={{background:'#ffffff', borderRadius:'10px', maxWidth:'500px'}}>
                   <Box height='60vh' display='flex' flex={1} flexDirection='column' overflow='auto' spacing={2} paddingBottom={2} textAlign='center'>
-                    {/* <Box style={{background: '#90a4ae'}} height="75vh" display="flex" flexDirection="column">
-                        <Box flex={1} overflow="auto">
-                        <Container space={2} maxWidth="sm"> */}
                     <Box textAlign='center' marginTop={2}>
                         <h1 style={{color: '#2F4B8A'}}>Register</h1>
                     </Box>
@@ -127,9 +124,6 @@ function Register(props) {
                       </Box>
                     </Box>
                   </Container>
-                    {/* 
-                    </Box>
-                </Box> */}
               </Grid>
             </Grid>
           </Stack>

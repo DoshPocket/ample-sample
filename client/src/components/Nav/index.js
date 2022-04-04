@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-// // import BasicModal from '../BasicModal';
 import IconButton from '@material-ui/core/IconButton';
 import LoginBtn from "../LoginBtn";
 import GenerateBtn from "../GenerateBtn";
@@ -10,8 +9,8 @@ import LogoutBtn from "../LogoutBtn";
 import SignupBtn from "../SignupBtn";
 import ProfileBtn from "../ProfileBtn";
 import { useLocation } from 'react-router-dom'
-import { AppBar, Box, Toolbar, Typography, Button } from '@mui/material';
-import { Link, Navigate } from 'react-router-dom';
+import { AppBar, Toolbar, Typography } from '@mui/material';
+import { Navigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/authContext';
 
@@ -90,18 +89,6 @@ export default function Nav() {
                 {button}
               </span>
             ))}
-          {/* <Box alignItems="right" sx={{flexGrow: 1, textAlign: "right"}}>
-            {user ? 
-            <>
-            <Button style={{textDecoration: "none", color: "white"}} onClick={onLogout} >Logout</Button>
-            </>
-            :
-            <>
-          <Link to="/login" style={{textDecoration: "none", color: "white", marginRight: "10px"}}>Login</Link>
-          <Link to="/register" style={{textDecoration: "none", color: "white"}}>Register</Link>
-            </>
-            }
-            </Box> */}
         </Toolbar>
       </AppBar>
      </div>
