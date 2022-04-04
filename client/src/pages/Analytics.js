@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import { TextField, Grid, Container, Stack, Box, Button } from '@mui/material';
+import { Grid, Container, Stack, Box } from '@mui/material';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,11 +22,10 @@ const useStyles = makeStyles((theme) => ({
                   <Box height='60vh' display='flex' flex={1} flexDirection='column'overflow='auto' spacing={2} paddingBottom={2}>
                     <Box flex={1} overflow='auto'>
                       {/* container with 2 columns */}
-                      <Grid container rowSpacing={10} columnSpacing={{ xs: 1, sm: 2, md: 3 }} alignItems='stretch'>
+                      <Grid container spacing={0} direction="column" alignItems="center" justifyContent="center">
                         <Box marginTop={2}>
                           <img src='./images/analytics_img_placeholder.png' alt='Analytics' width='500' height='500' />
                         </Box>
-                        {/* FILL ME WITH A SCROLLABLE WINDOW, A GENERATED SURVEY AND SURVEY ANALYTICS!!!*/}
                       </Grid>
                     </Box>
                   </Box>
