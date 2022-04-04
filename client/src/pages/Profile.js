@@ -60,18 +60,6 @@ export default function Profile() {
                 <Grid item xs={12} md={6} lg={4}>
                 <SurveyCard />
                 </Grid>
-                <Grid item xs={12} md={6} lg={4}>
-                <SurveyCard />
-                </Grid>
-                <Grid item xs={12} md={6} lg={4}>
-                <SurveyCard />
-                </Grid>
-                <Grid item xs={12} md={6} lg={4}>
-                <SurveyCard />
-                </Grid>
-                <Grid item xs={12} md={6} lg={4}>
-                <SurveyCard />
-                </Grid>
 
                 {/* FILL ME WITH PERSONAL INFORMATION!!!!! */}
                 {/* <ul>
