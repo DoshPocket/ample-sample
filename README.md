@@ -8,21 +8,19 @@ A survey creation, administration and analytics application. Business users will
 
 ## Table of Contents
 
-- [Installation](#installation)
+- [Technologies](#technologies)
 - [Usage](#usage)
 - [License](#license)
 - [Contribute](#contribute)
 - [Questions](#questions)
 
-## Installation
+## Technologies
 
-Clone this repository, install Node and then run install to install all dependencies.
+This application is supported by Node.js, Express, MongoDB, and React.
 
-`npm install`
+It also takes advantage of the following technologies:
 
-Run.
-
-`npm start`
+GraphQL, JWT, Material UI, and REST API
 
 ## Usage
 
