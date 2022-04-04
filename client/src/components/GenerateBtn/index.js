@@ -2,8 +2,6 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import GenerateIcon from '@mui/icons-material/Poll';
-// import Home from '../../pages/Home';
-
 
 const useStyles = makeStyles((theme) => ({
   button: {

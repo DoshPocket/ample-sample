@@ -1,14 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { makeStyles } from '@material-ui/core/styles';
-import {Box, Container, Grid, Stack, FormControl, FormControlLabel, FormLabel, RadioGroup, Radio} from '@mui/material';
-
-
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     flexGrow: 1,
-//   }
-// }));
+import {Box, Container, Grid, Stack, FormControl, FormControlLabel, RadioGroup, Radio} from '@mui/material';
 
 class SurveyTemplate extends React.Component {
 state = {
@@ -31,10 +23,7 @@ getSurvey = () => {
     });
 }
 
-
 displaySurvey = (posts) => {
-
-
 
   if (!posts.length) return null;
 
@@ -75,22 +64,7 @@ displaySurvey = (posts) => {
   ));
 };
 
-// return posts.map((post, index) => (
-//   <div key={index} className="displaySurveys">
-//     <h3>Title: {post.title}</h3>
-//     <p>Description: {post.description}</p>
-//     <p>Question: {post.questions}</p>
-//     <p>Choice: {post.choiceA}</p>
-//     <p>Choice: {post.choiceB}</p>
-//     <p>Choice: {post.choiceC}</p>
-//     <p>Choice: {post.choiceD}</p>
-//   </div>
-// ));
-// };
-
-
 render() {
-
 
   console.log(this.state);
   //JSX
@@ -103,7 +77,6 @@ render() {
   );
 }
 }
-
 
 export default SurveyTemplate;
 
