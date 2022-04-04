@@ -26,7 +26,7 @@ GraphQL, JWT, Material UI, and REST API
 
 Visit the Ample Sample deployed application at the link below!
 
-[`Ample Sample`]()
+[`Ample Sample`](https://amplesample.herokuapp.com/)
 
 ## License
 
