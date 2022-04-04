@@ -2,87 +2,64 @@ import React from 'react';
 import axios from 'axios';
 
 
+
 class SurveyTemplate extends React.Component {
-  state = {
-    posts: []
-  };
+state = {
+  posts: []
+};
 
 
 
-  componentDidMount = () => {
-    this.getSurvey();
-  };
+componentDidMount = () => {
+  this.getSurvey();
+};
 
-  getSurvey = () => {
-    axios.get('/api')
-      .then((response) => {
-        const data = response.data;
-        console.log(data)
-        console.log('Data has been received!!');
-      })
-      .catch(() => {
-        alert('Error retrieving data!!!');
-      });
-  }
-  displaySurvey = (posts) => {
+getSurvey = () => {
+  axios.get('/api')
+    .then((response) => {
+      const data = response.data;
+      this.setState({ posts: data });
+      console.log('Data has been received!!');
+    })
+    .catch(() => {
+      alert('Error retrieving data!!!');
+    });
+}
+displaySurvey = (posts) => {
 
-    if (!posts.length) return null;
+  if (!posts.length) return null;
 
 
-    return posts.map((post, index) => (
-      <div key={index} className="displaySurveys">
-        <h3>{post.title}</h3>
-        <p>{post.description}</p>
-        <p>{post.questions}</p>
+  return posts.map((post, index) => (
+    <div key={index} className="displaySurveys">
+      <h3>Title: {post.title}</h3>
+      <p>Description: {post.description}</p>
+      <p>Question: {post.questions}</p>
+      <p>Choice: {post.choiceA}</p>
+      <p>Choice: {post.choiceB}</p>
+      <p>Choice: {post.choiceC}</p>
+      <p>Choice: {post.choiceD}</p>
+    </div>
+  ));
+};
+
+
+render() {
+
+  console.log(this.state);
+  //JSX
+  return(
+    <div className="app">
+      <div className="surveys">
+        {this.displaySurvey(this.state.posts)}
       </div>
-    ));
-  };
-
-
-  render() {
-
-    console.log('State: ', this.state);
-
-    //JSX
-    return(
-      <div className="app">
-        <div className="surveys">
-          {this.displaySurvey(this.state.posts)}
-        </div>
-      </div>
-    );
-  }
+    </div>
+  );
+}
 }
 
+
 export default SurveyTemplate;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

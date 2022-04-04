@@ -9,10 +9,15 @@ import axios from 'axios';
 
 class GenerateSurvey extends React.Component {
 
+
   state = {
     title: '',
     description: '',
     questions: '',
+    choiceA: '',
+    choiceB: '',
+    choiceC: '',
+    choiceD: '',
     posts: []
   };
 
@@ -45,7 +50,11 @@ class GenerateSurvey extends React.Component {
     const payload = {
       title: this.state.title,
       description: this.state.description,
-      questions: this.state.questions
+      questions: this.state.questions,
+      choiceA: this.state.choiceA,
+      choiceB: this.state.choiceB,
+      choiceC: this.state.choiceC,
+      choiceD: this.state.choiceD
     };
 
 
@@ -66,25 +75,16 @@ class GenerateSurvey extends React.Component {
 
   resetUserInputs = () => {
     this.setState({
-      title: '',
+      title1: '',
       description: '',
-      questions: ''
+      questions: '',
+      choiceA: '',
+      choiceB: '',
+      choiceC: '',
+      choiceD: ''
     });
   };
 
-  displaySurvey = (posts) => {
-
-    if (!posts.length) return null;
-
-
-    return posts.map((post, index) => (
-      <div key={index} className="displaySurveys">
-        <h3>{post.title}</h3>
-        <p>{post.description}</p>
-        <p>{post.questions}</p>
-      </div>
-    ));
-  };
 
   render() {
     
@@ -104,9 +104,10 @@ class GenerateSurvey extends React.Component {
                         <p>Complete the form below and click save to have a survey generated and added to your profile.<br /> To keep your survey data concise, there is a limit of ten questions and four choices per question.</p>
                         <br />
                         <TextField
-                                helperText='What is the title of your survey?'
+                          helperText='What is the title of your survey?'
                           label='What is the title of your survey?'
                           variant='filled'
+                          name='title'
                           fullWidth
                           value={this.state.title}
                           onChange={this.handleChange}
@@ -117,6 +118,7 @@ class GenerateSurvey extends React.Component {
                                 helperText='Write a brief description of your survey.'
                           label='Write a brief description of your survey'
                           variant='filled'
+                          name='description'
                           multiline
                           rows={2}
                           fullWidth
@@ -129,6 +131,7 @@ class GenerateSurvey extends React.Component {
                           helperText='What is your first question?'
                           label='First Question'
                           variant='filled'
+                          name='questions'
                           fullWidth
                           value={this.state.questions}
                           onChange={this.handleChange}
@@ -139,8 +142,9 @@ class GenerateSurvey extends React.Component {
                           helperText='Input your first choice here'
                           label='First Choice'
                           variant='filled'
+                          name='choiceA'
                           fullWidth
-                          value={this.state.choices}
+                          value={this.state.choiceA}
                           onChange={this.handleChange}
                           required
                         />
@@ -148,8 +152,9 @@ class GenerateSurvey extends React.Component {
                           helperText='Input your first choice here'
                           label='Second Choice'
                           variant='filled'
+                          name='choiceB'
                           fullWidth
-                          value={this.state.choices}
+                          value={this.state.choiceB}
                           onChange={this.handleChange}
                           required
                         />
@@ -157,8 +162,9 @@ class GenerateSurvey extends React.Component {
                           helperText='Input your first choice here'
                           label='Third Choice'
                           variant='filled'
+                          name='choiceC'
                           fullWidth
-                          value={this.state.choices}
+                          value={this.state.choiceC}
                           onChange={this.handleChange}
                           required
                         />
@@ -166,8 +172,9 @@ class GenerateSurvey extends React.Component {
                           helperText='Input your first choice here'
                           label='Fourth Choice'
                           variant='filled'
+                          name='choiceD'
                           fullWidth
-                          value={this.state.choices}
+                          value={this.state.choiceD}
                           onChange={this.handleChange}
                           required
                         />

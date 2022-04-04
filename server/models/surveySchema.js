@@ -9,7 +9,10 @@ const SurveySchema = new Schema({
     title: String,
     description: String,
     questions: String,
-    choices: String,
+    choiceA: String,
+    choiceB: String,
+    choiceC: String,
+    choiceD: String,
     date: {
         type: String,
         default: Date.now()
