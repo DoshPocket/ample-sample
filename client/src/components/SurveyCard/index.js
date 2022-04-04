@@ -13,7 +13,7 @@ export default function MultiActionAreaCard() {
         <CardMedia
           component="img"
           height="140"
-          image="Images/survey-card.jpeg"
+          image="./images/survey-card.jpeg"
           alt="My First Survey"
         />
         <CardContent>
