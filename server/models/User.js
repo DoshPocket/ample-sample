@@ -17,6 +17,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
     len: [8],
+    // match: ["^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"]
   },
   company: {
     type: String,
