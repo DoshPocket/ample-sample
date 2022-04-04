@@ -4,7 +4,6 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, CardActions } from '@mui/material';
-// removed Button from above just to reduce warnings on command line in our big file merges.
 import ShareableBtn from "../ShareableBtn";
 
 export default function MultiActionAreaCard() {
@@ -14,20 +13,20 @@ export default function MultiActionAreaCard() {
         <CardMedia
           component="img"
           height="140"
-          image="Images/pixel-pic.jpeg"
+          image="Images/survey-card.jpeg"
           alt="My First Survey"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            DYNAMIC SURVEY NAME
+          <Typography box textAlign='center' gutterBottom variant="h5" component="div" style={{color: '#2F4B8A'}}>
+            My First Survey!
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            DYNAMIC SURVEY DESCRIPTION
+          <Typography box textAlign='center' variant="body2" color="text.secondary" style={{color: '#2F4B8A'}}>
+            This survey will pulse check my staff regarding the new protocols.
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <ShareableBtn />
+        <ShareableBtn justifyContent='center'/>
       </CardActions>
     </Card>
   );
