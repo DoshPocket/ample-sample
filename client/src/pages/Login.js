@@ -74,14 +74,14 @@ function Login(props) {
       });
   return (
     <>
-    <ThemeProvider theme={theme}>
+
       <div style={{background: '#90a4ae', flexGrow: 1}}>
         <Container maxWidth='md'>
           <Stack spacing={2}>
             <Grid container rowSpacing={10} columnSpacing={{ xs: 1, sm: 2, md: 3 }} alignItems='stretch'>
               <Grid item xs={12} mt={20} mb={20}>
                 <Container style={{background:'#ffffff', borderRadius:'10px', maxWidth:'500px'}}>
-                  <Box height='45vh' display='flex' flex={1} flexDirection='column' overflow='auto' spacing={2} paddingBottom={2} textAlign='center'>
+                  <Box height='55vh' display='flex' flex={1} flexDirection='column' overflow='auto' spacing={2} paddingBottom={2} textAlign='center'>
                   {/* <Box style={{background: '#90A4AE'}} height="75vh" display="flex" flexDirection="column">
                     <Box flex={1} overflow="auto">
                     <Container space={2} maxWidth="sm"> */}
@@ -90,12 +90,14 @@ function Login(props) {
                       <p style={{color: '#2F4B8A'}}>Please login below to access your saved surveys</p>
                     </Box>
                     <Stack spacing={2} paddingBottom={2}>
-                      <TextField
+                      <TextField required focused
+                        variant='filled'
                         label="Email"
                         name="email"
                         onChange={onChange}
                       />
-                      <TextField
+                      <TextField required focused
+                        variant='filled'
                         label="Password"
                         name="password"
                         onChange={onChange}
@@ -110,6 +112,7 @@ function Login(props) {
                       )
                     })}
                     <br />
+                    <Box textAlign='center'>
                       <Button
                         variant="contained"
                         className={classes.button}
@@ -118,6 +121,7 @@ function Login(props) {
                         startIcon={<LoginIcon />}>
                         Login
                       </Button>
+                      </Box>
                     </Box>
                   </Container>
                 </Grid>
@@ -125,7 +129,7 @@ function Login(props) {
             </Stack>
           </Container>
         </div>
-      </ThemeProvider>
+
     </>
   );
 };
