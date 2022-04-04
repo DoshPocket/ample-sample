@@ -68,7 +68,7 @@ function Register(props) {
       <Box style={{background: '#90a4ae'}} height="75vh"    display="flex" flexDirection="column">
         <Box flex={1} overflow="auto">
             <Container space={2} maxWidth="sm">
-                <Box container textAlign='center'>
+                <Box textAlign='center'>
                     <h1>Register</h1>
                 </Box>
                 <Stack spacing={2} paddingBottom={2}>
